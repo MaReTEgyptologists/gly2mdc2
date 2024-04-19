@@ -12,10 +12,10 @@ Version 2.0 of the Gly2Mdc tool converts a .gly file produced with JSesh to 3 di
 Additionally makes a JSON-format text where the signs have been annotated with encoding, Unicode, and Thot Sign List designations
 
 
-#### Gly2mdc2-2.0.jar can be opened by double-clicking.
+### Gly2mdc2-2.0.jar can be opened by double-clicking.
 
 
-**NOTES on the tool:**
+## **NOTES on the tool:**
 
 Tested only on a Mac
 
@@ -29,7 +29,7 @@ Long files take time to process and make the tool unusable while this happens. A
 
 If the Unicode characters are not rendered, install the Aegyptus.otf (src/resources) to you fonts!
 
-**NOTES on the choices made for converting the encoding:**
+## **NOTES on the choices made for converting the encoding:**
 
 Gly2Mdc does NOT support the absolute placing of the signs when converted to Unicode (and JSON). For converting files with manually placed signs for accurate Unicode, HieroJax can be used. Here the signs are simply presented one after another.
 
@@ -41,7 +41,7 @@ All the different ways to indicate ligatures after the sign in JSesh (&&& && & _
 
 Uses the ligatures that are specified in the ligatures.txt file in the JSesh source code + D&d.
 
-**JSON format contains the following **
+## **JSON format contains the following**
 
 textName = 1. line starting in JSesh with +
 
@@ -74,7 +74,7 @@ rotation	= if the sign has an attribute for rotating it, e.g. R270
 size		= if the sign has an attribute that defines its size
 
 
-**TO DO:**
+## **TO DO:**
 
 Add functionality to INFO button
 
