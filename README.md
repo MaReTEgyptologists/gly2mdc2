@@ -33,7 +33,7 @@ If the Unicode characters are not rendered, install the Aegyptus.otf (src/resour
 
 ## **NOTES on the choices made for converting the encoding:**
 
-Gly2Mdc does NOT support the absolute placing of the signs when converted to Unicode (and JSON). For converting files with manually placed signs for accurate Unicode, HieroJax can be used. Here the signs are simply presented one after another.
+Gly2Mdc does NOT support the absolute placing of the signs when converted to Unicode (and JSON). For converting files with manually placed signs to accurate Unicode, HieroJax (https://nederhof.github.io/hierojax/mdcconversion.html) can be used. Here the signs are simply presented one after another.
 
 Since parentheses indicate croup in JSesh, the white spaces inside them have been changed to * (i.e. next to each other).
 
