@@ -12,12 +12,14 @@ Version 2.0 of the Gly2Mdc tool converts a .gly file produced with JSesh to 3 di
 Additionally makes a JSON-format text where the signs have been annotated with encoding, Unicode, and Thot Sign List designations
 
 
-### Gly2mdc2-2.0.jar can be opened by double-clicking.
+### Gly2mdc2-2.0.jar can be started by double-clicking.
 
 
 ## **NOTES on the tool:**
 
 Tested only on a Mac
+
+Requires Java JRE installed on the computer
 
 Build with Java JDK 15, but might work with earlier versions as well (not tested).
 
