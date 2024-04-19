@@ -1,0 +1,325 @@
+13000	bs	
+13010	bs	
+13011	bs	
+13013	ts	
+13014	bs	be	
+13015	ts	be	
+13016	ts	be	
+13017	m	
+1301C	bs	
+1301D	bs	
+1301E	bs	
+1301F	bs	
+13020	bs	be	
+13021	ts	te	
+13022	bs	
+13023	be	
+13026	bs	
+13029	ts	
+13044	bs	be	
+1304B	bs	
+1304D	bs	
+13059	bs	
+13060	bs	be	
+13068	be	
+13078	bs	
+13085	bs	te	
+13087	te	b	
+13093	m	
+13094	bs	be	
+13098	m	
+13099	bs	
+1309C	ts	te	
+1309D	t	
+1309E	t	
+1309F	t	
+130A0	t	
+130A1	t	
+130A2	t	
+130A3	t	
+130A4	t	
+130A5	t	
+130A6	t	be	
+130B8	b	
+130B9	bs	te	
+130BA	b	
+130BB	ts	
+130BC	bs	
+130BD	te	
+130BE	ts	be	
+130BF	bs	te	
+130C0	ts	
+130C1	ts	
+130C2	m	
+130D2	bs	te	
+130D3	bs	te	
+130D4	bs	te	
+130D7	bs	te	
+130D8	bs	te	
+130D9	bs	te	
+130DA	bs	te	
+130DB	te	b	
+130DC	te	
+130DD	bs	te	
+130DE	bs	te	
+130E0	bs	te	
+130E1	bs	te	
+130E2	te	b	
+130E3	te	
+130E5	bs	te	
+130E6	bs	te	
+130E7	bs	te	
+130E8	bs	te	
+130E9	bs	te	
+130EA	ts	te	
+130EB	te	
+130EC	bs	te	
+130ED	ts	te	
+130F0	bs	te	
+130F1	bs	te	
+130F2	bs	te	
+130F3	te	
+130F4	bs	te	
+130F5	bs	te	
+130F6	bs	te	
+130F7	bs	te	
+130F8	bs	
+130FD	bs	te	
+130FE	t	
+13100	ts	
+13102	ts	
+13103	bs	te	
+13104	bs	te	
+13105	bs	
+13106	bs	be	
+1310B	t	
+1310C	t	
+13112	ts	
+13113	b	
+13116	bs	
+1311A	bs	
+1311B	bs	
+1311C	bs	be	
+1311D	bs	be	
+1311E	b	
+13122	bs	te	
+13126	te	
+13138	bs	te	
+1313F	bs	te	
+13140	bs	te	
+13141	ts	te	
+13142	bs	te	
+13143	bs	te	
+13144	bs	
+13145	ts	te	
+13146	bs	te	
+13147	ts	te	
+13148	bs	te	
+13149	ts	te	
+1314A	bs	te	
+1314B	te	
+1314C	te	
+1314D	bs	te	
+1314F	te	
+13150	bs	te	
+13151	bs	
+13152	ts	te	
+13153	bs	te	
+13154	bs	te	
+13155	bs	te	
+13156	bs	te	
+13157	bs	te	
+13158	bs	te	
+13159	bs	te	
+1315A	bs	te	
+1315B	bs	
+1315C	bs	te	
+1315D	bs	te	
+1315E	bs	te	
+1315F	bs	te	
+13160	bs	te	
+13161	bs	te	
+13162	bs	te	
+13163	bs	te	
+13164	bs	te	
+13165	bs	te	
+13166	bs	te	
+13167	bs	te	
+13168	bs	te	
+13169	bs	te	
+1316A	bs	te	
+1316B	bs	te	
+1316C	bs	te	
+1316D	bs	te	
+1316E	ts	be	
+1316F	bs	be	
+13170	bs	te	
+13171	bs	te	
+13172	te	
+13173	bs	te	
+13174	bs	te	
+13175	bs	te	
+13176	bs	te	
+13177	te	
+1317A	bs	te	
+1317D	te	
+13180	bs	be	
+13186	ts	te	
+13188	bs	te	
+1318E	ts	
+1318F	bs	te	
+13190	bs	te	
+13191	t	
+13193	bs	t	
+13194	bs	t	
+13195	bs	te	
+13196	t	
+13197	te	
+13198	te	
+131A1	bs	te	
+131A3	b	
+131AE	ts	te	
+131AF	ts	te	
+131B0	bs	te	
+131B2	bs	te	
+131B3	be	
+131B8	bs	te	
+131B9	bs	
+131C6	bs	te	
+131CB	bs	
+131CC	bs	
+131D1	bs	te	
+131D2	bs	te	
+131D3	bs	te	
+131D4	te	
+131D6	te	
+131D7	bs	te	
+131D8	bs	be	
+131D9	bs	te	
+131E7	te	
+131ED	m	
+131F0	bs	be	
+131F1	bs	be	
+131F9	b	
+131FB	ts	
+131FC	ts	te	
+13200	m	
+1320B	t	
+13214	ts	
+13215	ts	
+1321D	bs	be	
+13250	m	
+13254	m	
+13255	m	
+13256	m	
+13257	m	
+13267	m	
+1326B	m	
+1326C	m	
+13274	ts	te	
+13284	bs	be	
+13285	m	
+1328A	bs	te	
+1328B	be	
+1328D	ts	
+1328E	ts	te	
+13291	bs	be	
+1329A	ts	te	
+132A1	bs	be	
+132A3	ts	te	
+132A5	bs	te	
+132A6	bs	te	
+132A8	ts	
+132A9	ts	
+132AB	bs	be	
+132AF	bs	be	
+132B0	bs	be	
+132B1	bs	be	
+132B9	bs	
+132BC	bs	
+132BE	bs	be	
+132BF	bs	te	
+132D1	ts	be	
+132C1	bs	te	
+132C7	bs	be	
+132D1	ts	be	
+132D2	ts	te	
+132DE	b	
+132E0	ts	te	
+132E1	ts	te	
+132E2	ts	te	
+132E8	b	
+132EB	t	b	
+132EC	bs	be	
+132F2	m	
+132F3	bs	be	
+132F4	be	
+132F5	bs	te	
+132F6	ts	te	
+132F9	bs	be	
+132FA	bs	be	
+132FB	bs	be	
+132FC	bs	be	
+132FE	be	
+13304	be	
+13305	ts	be	
+13308	bs	te	
+1330C	bs	te	
+1330D	bs	te	
+1330F	bs	
+1331D	bs	
+13326	ts	
+13327	ts	
+13329	bs	te	
+1332C	bs	te	
+1332D	bs	te	
+1332F	bs	te	
+13333	ts	be	
+13334	ts	be	
+13335	be	
+13336	be	
+13337	be	
+1333D	b	
+1333E	b	
+1333F	ts	
+13340	ts	
+13341	bs	te	
+13344	te	
+13345	ts	te	
+13346	ts	te	
+13347	te	bs	
+13348	te	
+13349	te	
+13353	bs	te	
+13355	t	b	
+13359	bs	be	
+1335A	bs	te	
+1335D	bs	be	
+1335F	ts	
+1336F	m	
+13374	bs	be	
+13376	m	
+13377	m	
+1337C	bs	
+1337D	bs	
+1337E	bs	te	
+13394	bs	
+13395	bs	
+13396	bs	
+1339C	bs	te	
+1339E	bs	be	
+133AA	bs	te	
+133CE	bs	
+133F1	bs	te	
+133F6	bs	te	
+133F7	bs	te	
+13411	ts	te	
+13413	ts	
+13414	te	
+13415	ts	be	
+13421	m	
+13423	ts	te	
+13424	bs	te	
+13425	b	
+13427	bs	te	
+13428	bs	

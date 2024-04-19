@@ -1,0 +1,1513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<signlist
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="signtsl.xsd">
+
+<p>
+Signs or classes in the
+<a href="https://thotsignlist.org">Thot Sign List</a>
+that can be associated with the signs in Unicode.
+Created with information from Jorke Grotenhuis.
+</p>
+<p>
+Signs tagged with <b>composition</b> can be formed from other signs by control
+characters, and would therefore not be expected to be found in the TSL.
+</p>
+<p>
+Similarly, signs tagged with <b>mirroring</b> or <b>rotation</b> 
+can be formed using prospective control characters for mirroring or rotation.
+</p>
+<p>
+Signs tagged with <b>variant</b> are graphical variants of other signs in
+Unicode, which may or may not be added to the TSL as class at some point.
+</p>
+<p>
+Code points tagged by <b>typographical</b> do not have an independent meaning
+as signs, but are used to form enclosures, and would therefore not be in the
+TSL.
+</p>
+
+<sign id="A1" tslsign="82" />
+<sign id="A2" tslsign="290" />
+<sign id="A3" tslsign="459" />
+<sign id="A4" tslsign="630" />
+<sign id="A5" tslsign="848" tslclass="01" />
+<sign id="A5a" tslsign="848" tslclass="00" />
+<sign id="A6" tslsign="851" />
+<sign id="A6a" tslsign="" >
+<p>
+Has reading <al>sAT</al>, "make libation". Not related to A6 at all.
+</p>
+</sign>
+<sign id="A6b" tslsign="">
+<p>
+Has reading <al>sAT</al>, "make libation". Not related to A6 at all.
+Not clearly attested; may not exist.
+</p>
+</sign>
+<sign id="A7" tslsign="879" />
+<sign id="A8" tslsign="895" />
+<sign id="A9" tslsign="912" />
+<sign id="A10" tslsign="83" />
+<sign id="A11" tslsign="114" />
+<sign id="A12" tslsign="132" />
+<sign id="A13" tslsign="149" />
+<sign id="A14" tslsign="189" tslclass="00" />
+<sign id="A14a" tslsign="189" tslclass="01" />
+<sign id="A15" tslsign="214" />
+<sign id="A16" tslsign="234" />
+<sign id="A17" tslsign="245" />
+<sign id="A17a" tslsign="256" />
+<sign id="A18" tslsign="261" />
+<sign id="A19" tslsign="274" />
+<sign id="A20" tslsign="291" />
+<sign id="A21" tslsign="303" />
+<sign id="A22" tslsign="329" />
+<sign id="A23" tslsign="341" />
+<sign id="A24" tslsign="361" />
+<sign id="A25" tslsign="383" />
+<sign id="A26" tslsign="396" />
+<sign id="A27" tslsign="407" />
+<sign id="A28" tslsign="422" />
+<sign id="A29" tslsign="436" />
+<sign id="A30" tslsign="460" />
+<sign id="A31" tslsign="492" />
+<sign id="A32" tslsign="516" />
+<sign id="A32a" tslsign="" status="variant">
+<p>
+Only attested in hieratic.
+</p>
+</sign>
+<sign id="A33" tslsign="7041" />
+<sign id="A34" tslsign="549" />
+<sign id="A35" tslsign="563" />
+<sign id="A36" tslsign="580" />
+<sign id="A37" tslsign="594" />
+<sign id="A38" tslsign="606" />
+<sign id="A39" tslsign="617" />
+<sign id="A40" tslsign="631" tslclass="00" />
+<sign id="A40a" tslsign="631" tslclass="01" />
+<sign id="A41" tslsign="651" tslclass="00" />
+<sign id="A42" tslsign="651" tslclass="01" />
+<sign id="A42a" tslsign="651" tslclass="03" />
+<sign id="A43" tslsign="679" tslclass="02" />
+<sign id="A43a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=702">702</a>.
+No clear attestation found.
+</p>
+</sign>
+<sign id="A44" tslsign="679" tslclass="03" />
+<sign id="A45" tslsign="714" tslclass="00" />
+<sign id="A45a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=726">726</a>.
+No clear attestation found.
+</p>
+</sign>
+<sign id="A46" tslsign="714" tslclass="01" />
+<sign id="A47" tslsign="748" />
+<sign id="A48" tslsign="764" />
+<sign id="A49" tslsign="777" />
+<sign id="A50" tslsign="794" />
+<sign id="A51" tslsign="811" />
+<sign id="A52" tslsign="821" />
+<sign id="A53" tslsign="832" />
+<sign id="A54" tslsign="834" />
+<sign id="A55" tslsign="835" />
+<sign id="A56" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=837">837</a>.
+Attested from cursive.
+</p>
+</sign>
+<sign id="A57" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=838">838</a>.
+</p>
+</sign>
+<sign id="A58" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=845">845</a>.
+Is just variant of <a href="https://thotsignlist.org/mysign?id=843">843</a>?
+</p>
+</sign>
+<sign id="A59" tslsign="846" />
+<sign id="A60" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=852">852</a>.
+</p>
+</sign>
+<sign id="A61" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=857">857</a>.
+Not clearly attested.
+</p>
+</sign>
+<sign id="A62" tslsign="858" />
+<sign id="A63" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=860">860</a>.
+Attestation not found.
+</p>
+</sign>
+<sign id="A64" tslsign="">
+<p>
+Attested from facsimile.
+</p>
+</sign>
+<sign id="A65" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=747">747</a>.
+</p>
+</sign>
+<sign id="A66" tslsign="348" />
+<sign id="A67" tslsign="425">
+<p>
+Prototype should not wear kilt.
+</p>
+</sign>
+<sign id="A68" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=286">286</a>.
+May need adjustment of shape of knife.
+</p>
+</sign>
+<sign id="A69" tslsign="">
+<p>
+Functionally distinct from <a
+href="https://thotsignlist.org/mysign?id=880">880</a>?
+</p>
+</sign>
+<sign id="A70" tslsign="883">
+<p>
+The hands facing outward in the Unicode code charts appears to be a mistake.
+</p>
+</sign>
+<sign id="B1" tslsign="1070" />
+<sign id="B2" tslsign="1104" />
+<sign id="B3" tslsign="1130" tslclass="00" />
+<sign id="B4" tslsign="1130" tslclass="01" />
+<sign id="B5" tslsign="1164" />
+<sign id="B5a" status="variant" />
+<sign id="B6" tslsign="1182" />
+<sign id="B7" tslsign="1197">
+<p>
+The uraeus in the prototype may be an error.
+</p>
+</sign>
+<sign id="B8" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=1219">1219</a>.
+</p>
+</sign>
+<sign id="B9" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=1159">1159</a>.
+</p>
+</sign>
+<sign id="C1" tslsign="1251" />
+<sign id="C2" tslsign="1500" />
+<sign id="C2a" tslsign="1660" />
+<sign id="C2b" tslsign="" status="mirroring"/>
+<sign id="C2c" tslsign="" status="mirroring"/>
+<sign id="C3" tslsign="1669" />
+<sign id="C4" tslsign="1710" tslclass="00" />
+<sign id="C5" tslsign="1710" tslclass="01" />
+<sign id="C6" tslsign="1775" />
+<sign id="C7" tslsign="1797" />
+<sign id="C8" tslsign="1832" />
+<sign id="C9" tslsign="7042" />
+<sign id="C10" tslsign="1252" tslclass="00" />
+<sign id="C10a" tslsign="1252" tslclass="01" />
+<sign id="C11" tslsign="1292" />
+<sign id="C12" tslsign="1324" />
+<sign id="C13" tslsign="" status="mirroring" />
+<sign id="C14" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=1365">1365</a>.
+</p>
+</sign>
+<sign id="C15" tslsign="" status="mirroring" />
+<sign id="C16" tslsign="">
+<p>
+Attested but status as independent sign and desired prototype are unclear.
+</p>
+</sign>
+<sign id="C17" tslsign="1423" />
+<sign id="C18" tslsign="1441" />
+<sign id="C19" tslsign="1473" />
+<sign id="C20" tslsign="1501" />
+<sign id="C21" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=1688">1688</a>.
+</p>
+</sign>
+<sign id="C22" tslsign="1740" />
+<sign id="C23" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=1413">1413</a>.
+Attestation not confirmed.
+</p>
+</sign>
+<sign id="C24" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=1456">1456</a>.
+Attestation not confirmed.
+</p>
+</sign>
+<sign id="D1" tslsign="1870" />
+<sign id="D2" tslsign="2008" />
+<sign id="D3" tslsign="2134" />
+<sign id="D4" tslsign="2269" />
+<sign id="D5" tslsign="2306" tslclass="00" />
+<sign id="D6" tslsign="2306" tslclass="01" />
+<sign id="D7" tslsign="2355" />
+<sign id="D8" tslsign="2370" tslclass="00" />
+<sign id="D8a" tslsign="2370" tslclass="01" />
+<sign id="D9" tslsign="2385" />
+<sign id="D10" tslsign="1871" />
+<sign id="D11" tslsign="1885" />
+<sign id="D12" tslsign="1896" />
+<sign id="D13" tslsign="1908" />
+<sign id="D14" tslsign="1920" />
+<sign id="D15" tslsign="1936" />
+<sign id="D16" tslsign="1952" />
+<sign id="D17" tslsign="1964" />
+<sign id="D18" tslsign="1982" />
+<sign id="D19" tslsign="1996" tslclass="00" />
+<sign id="D20" tslsign="1996" tslclass="01" />
+<sign id="D21" tslsign="2020" />
+<sign id="D22" tslsign="2033" />
+<sign id="D23" tslsign="2047" />
+<sign id="D24" tslsign="2061" />
+<sign id="D25" tslsign="2072" />
+<sign id="D26" tslsign="2083" />
+<sign id="D27" tslsign="2096" tslclass="00" />
+<sign id="D27a" tslsign="2096" tslclass="01" />
+<sign id="D28" tslsign="2110" />
+<sign id="D29" tslsign="2122" />
+<sign id="D30" tslsign="2135" />
+<sign id="D31" tslsign="2145" />
+<sign id="D31a" tslsign="7044" />
+<sign id="D32" tslsign="2156" />
+<sign id="D33" tslsign="2177" />
+<sign id="D34" tslsign="2193" tslclass="00">
+<p>
+Attested occurrences seem to have mace rather than axe.
+</p>
+</sign>
+<sign id="D34a" tslsign="2193" tslclass="01" />
+<sign id="D35" tslsign="2208" />
+<sign id="D36" tslsign="2222" />
+<sign id="D37" tslsign="2233" />
+<sign id="D38" tslsign="2245" />
+<sign id="D39" tslsign="2256" />
+<sign id="D40" tslsign="2270" />
+<sign id="D41" tslsign="2280" />
+<sign id="D42" tslsign="2290" />
+<sign id="D43" tslsign="2291" />
+<sign id="D44" tslsign="2292" />
+<sign id="D45" tslsign="2293" />
+<sign id="D46" tslsign="2295" />
+<sign id="D46a" tslsign="2298" />
+<sign id="D47" tslsign="2301" />
+<sign id="D48" tslsign="2303" />
+<sign id="D48a" tslsign="">
+<p>
+What sign represents is unclear.
+</p>
+</sign>
+<sign id="D49" tslsign="2304" />
+<sign id="D50" tslsign="2307" />
+<sign id="D50a" tslsign="" status="composition" />
+<sign id="D50b" tslsign="" status="composition" />
+<sign id="D50c" tslsign="" status="composition" />
+<sign id="D50d" tslsign="" status="composition" />
+<sign id="D50e" tslsign="" status="composition" />
+<sign id="D50f" tslsign="" status="composition" />
+<sign id="D50g" tslsign="" status="composition" />
+<sign id="D50h" tslsign="" status="composition" />
+<sign id="D50i" tslsign="" status="composition" />
+<sign id="D51" tslsign="2318" />
+<sign id="D52" tslsign="2324" />
+<sign id="D52a" tslsign="" status="composition">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=5531">5531</a>.
+</p>
+</sign>
+<sign id="D53" tslsign="2326" />
+<sign id="D54" tslsign="2328" />
+<sign id="D54a" status="variant" />
+<sign id="D55" tslsign="2329" />
+<sign id="D56" tslsign="2330" />
+<sign id="D57" tslsign="2331" />
+<sign id="D58" tslsign="2336" />
+<sign id="D59" tslsign="2337" />
+<sign id="D60" tslsign="2339" />
+<sign id="D61" tslsign="2340" tslclass="00" />
+<sign id="D62" tslsign="2340" tslclass="01" />
+<sign id="D63" tslsign="2340" tslclass="02" />
+<sign id="D64" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=2098">2098</a>.
+</p>
+</sign>
+<sign id="D65" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=1912">1912</a>.
+</p>
+</sign>
+<sign id="D66" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=2067">2067</a>.
+</p>
+</sign>
+<sign id="D67" tslsign="">
+<p>
+Candidate for TSL?
+</p>
+</sign>
+<sign id="D67a" tslsign="" status="composition" />
+<sign id="D67b" tslsign="" status="composition" />
+<sign id="D67c" tslsign="" status="composition" />
+<sign id="D67d" tslsign="" status="composition" />
+<sign id="D67e" tslsign="" status="composition" />
+<sign id="D67f" tslsign="" status="composition" />
+<sign id="D67g" tslsign="" status="composition" />
+<sign id="D67h" tslsign="" status="composition" />
+<sign id="E1" tslsign="2397" />
+<sign id="E2" tslsign="2586" />
+<sign id="E3" tslsign="2740" />
+<sign id="E4" tslsign="2771" />
+<sign id="E5" tslsign="2783" />
+<sign id="E6" tslsign="2798" />
+<sign id="E7" tslsign="2814" />
+<sign id="E8" tslsign="2833" />
+<sign id="E8a" tslsign="2847" />
+<sign id="E9" tslsign="2850" />
+<sign id="E9a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=2399">2399</a>.
+</p>
+</sign>
+<sign id="E10" tslsign="2398" tslclass="00" />
+<sign id="E11" tslsign="2398" tslclass="01" />
+<sign id="E12" tslsign="2432" />
+<sign id="E13" tslsign="2446" />
+<sign id="E14" tslsign="2466" />
+<sign id="E15" tslsign="2499" />
+<sign id="E16" tslsign="2524" tslclass="00" />
+<sign id="E16a" tslsign="2524" tslclass="01" />
+<sign id="E17" tslsign="2538" />
+<sign id="E17a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=2468">2468</a>.
+</p>
+</sign>
+<sign id="E18" tslsign="2557" tslclass="00" />
+<sign id="E19" tslsign="2557" tslclass="01" />
+<sign id="E20" tslsign="2587" />
+<sign id="E20a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=2479">2479</a>.
+Not clearly attested.
+</p>
+</sign>
+<sign id="E21" tslsign="2605" />
+<sign id="E22" tslsign="2646" />
+<sign id="E23" tslsign="2658" />
+<sign id="E24" tslsign="2670" />
+<sign id="E25" tslsign="2685" />
+<sign id="E26" tslsign="2700" />
+<sign id="E27" tslsign="2712" />
+<sign id="E28" tslsign="2723" />
+<sign id="E28a" tslsign="">
+<p>
+Not attested in this exact form.
+</p>
+</sign>
+<sign id="E29" tslsign="2734" />
+<sign id="E30" tslsign="2741" />
+<sign id="E31" tslsign="2755" />
+<sign id="E32" tslsign="2758" />
+<sign id="E33" tslsign="2759" />
+<sign id="E34" tslsign="2760" />
+<sign id="E34a" status="variant" />
+<sign id="E36" tslsign="2763" />
+<sign id="E37" tslsign="">
+<p>
+Candidate for TSL?
+</p>
+</sign>
+<sign id="E38" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=2853">2853</a>.
+</p>
+</sign>
+<sign id="F1" tslsign="2871" />
+<sign id="F1a" tslsign="3125" />
+<sign id="F2" tslsign="3001" />
+<sign id="F3" tslsign="3038" />
+<sign id="F4" tslsign="3077" />
+<sign id="F5" tslsign="3103" />
+<sign id="F6" tslsign="3121" />
+<sign id="F7" tslsign="3140" />
+<sign id="F8" tslsign="3164" />
+<sign id="F9" tslsign="3177" />
+<sign id="F10" tslsign="2872" tslclass="00" />
+<sign id="F11" tslsign="2872" tslclass="01" />
+<sign id="F12" tslsign="2900" />
+<sign id="F13" tslsign="2913" />
+<sign id="F13a" status="variant" />
+<sign id="F14" tslsign="2930" />
+<sign id="F15" tslsign="2948" />
+<sign id="F16" tslsign="2961" />
+<sign id="F17" tslsign="2976" />
+<sign id="F18" tslsign="2987" />
+<sign id="F19" tslsign="2995" />
+<sign id="F20" tslsign="3002" />
+<sign id="F21" tslsign="3015" />
+<sign id="F21a" status="variant" />
+<sign id="F22" tslsign="3022" />
+<sign id="F23" tslsign="3023" tslclass="00" />
+<sign id="F24" tslsign="3023" tslclass="01" />
+<sign id="F25" tslsign="3025" />
+<sign id="F26" tslsign="3027" />
+<sign id="F27" tslsign="3028" />
+<sign id="F28" tslsign="3031" />
+<sign id="F29" tslsign="3032" />
+<sign id="F30" tslsign="3039" />
+<sign id="F31" tslsign="3042" />
+<sign id="F31a" status="variant" />
+<sign id="F32" tslsign="3044" />
+<sign id="F33" tslsign="3045" />
+<sign id="F34" tslsign="3048" />
+<sign id="F35" tslsign="3049" />
+<sign id="F36" tslsign="3051" />
+<sign id="F37" tslsign="3055" />
+<sign id="F37a" tslsign="3057" />
+<sign id="F38" tslsign="7046" />
+<sign id="F38a" status="variant">
+<p>
+Not attested.
+</p>
+</sign>
+<sign id="F39" tslsign="3073" />
+<sign id="F40" tslsign="3078" />
+<sign id="F41" tslsign="3084" />
+<sign id="F42" tslsign="3088" />
+<sign id="F43" tslsign="3091" />
+<sign id="F44" tslsign="3092" />
+<sign id="F45" tslsign="3093" />
+<sign id="F45a" tslsign="" status="variant" />
+<sign id="F46" tslsign="3094" tslclass="00" />
+<sign id="F46a" tslsign="3094" tslclass="02" />
+<sign id="F47" tslsign="3094" tslclass="01" />
+<sign id="F47a" tslsign="3094" tslclass="03" />
+<sign id="F48" tslsign="3100" tslclass="00" />
+<sign id="F49" tslsign="3100" tslclass="01" />
+<sign id="F50" tslsign="3104" />
+<sign id="F51" tslsign="3106" />
+<sign id="F51a" tslsign="" status="composition" />
+<sign id="F51b" tslsign="" status="composition" />
+<sign id="F51c" tslsign="" status="rotation" />
+<sign id="F52" tslsign="3111" />
+<sign id="F53" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=3119">3119</a>.
+</p>
+</sign>
+<sign id="G1" tslsign="3195" />
+<sign id="G2" tslsign="3365" />
+<sign id="G3" tslsign="3515" />
+<sign id="G4" tslsign="3551" />
+<sign id="G5" tslsign="3582" />
+<sign id="G6" tslsign="3598" />
+<sign id="G6a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=3257">3257</a>.
+</p>
+</sign>
+<sign id="G7" tslsign="3611" />
+<sign id="G7a" tslsign="3626" tslclass="00" />
+<sign id="G7b" tslsign="3626" tslclass="01" />
+<sign id="G8" tslsign="3632" />
+<sign id="G9" tslsign="3648" />
+<sign id="G10" tslsign="3196" />
+<sign id="G11" tslsign="3210" />
+<sign id="G11a" tslsign="">
+<p>
+Not attested.
+</p>
+</sign>
+<sign id="G12" tslsign="3223" />
+<sign id="G13" tslsign="3243" />
+<sign id="G14" tslsign="3260" />
+<sign id="G15" tslsign="3275" />
+<sign id="G16" tslsign="3293" />
+<sign id="G17" tslsign="3310" />
+<sign id="G18" tslsign="3329" />
+<sign id="G19" tslsign="" status="composition">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=3347">3347</a>.
+Not attested.
+</p>
+</sign>
+<sign id="G20" tslsign="3366" />
+<sign id="G20a" tslsign="" status="composition">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=3649">3649</a>.
+Not attested in exact form.
+</p>
+</sign>
+<sign id="G21" tslsign="3381" />
+<sign id="G22" tslsign="3404" />
+<sign id="G23" tslsign="3417" tslclass="00" />
+<sign id="G24" tslsign="3417" tslclass="01" />
+<sign id="G25" tslsign="3444" />
+<sign id="G26" tslsign="3456" />
+<sign id="G26a" tslsign="3469" />
+<sign id="G27" tslsign="3473" />
+<sign id="G28" tslsign="3487" />
+<sign id="G29" tslsign="3500" />
+<sign id="G30" tslsign="3516" />
+<sign id="G31" tslsign="3528" />
+<sign id="G32" tslsign="3538" />
+<sign id="G33" tslsign="3539" />
+<sign id="G34" tslsign="3541" />
+<sign id="G35" tslsign="3543" />
+<sign id="G36" tslsign="3544" />
+<sign id="G36a" status="variant" />
+<sign id="G37" tslsign="3545" />
+<sign id="G37a" status="variant" />
+<sign id="G38" tslsign="3546" />
+<sign id="G39" tslsign="3547" />
+<sign id="G40" tslsign="3552" />
+<sign id="G41" tslsign="3562" />
+<sign id="G42" tslsign="3565" />
+<sign id="G43" tslsign="3566" />
+<sign id="G43a" tslsign="" status="composition" />
+<sign id="G44" tslsign="3568" />
+<sign id="G45" tslsign="3569" />
+<sign id="G45a" tslsign="" status="composition">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=3439">3439</a>.
+</p>
+</sign>
+<sign id="G46" tslsign="3570" />
+<sign id="G47" tslsign="3571" />
+<sign id="G48" tslsign="3574" />
+<sign id="G49" tslsign="3576" />
+<sign id="G50" tslsign="3583" />
+<sign id="G51" tslsign="3584" />
+<sign id="G52" tslsign="3586" />
+<sign id="G53" tslsign="3587" />
+<sign id="G54" tslsign="3591" />
+<sign id="H1" tslsign="3663" />
+<sign id="H2" tslsign="3681" />
+<sign id="H3" tslsign="3694" />
+<sign id="H4" tslsign="3705" />
+<sign id="H5" tslsign="3714" />
+<sign id="H6" tslsign="3717" tslclass="00" />
+<sign id="H6a" tslsign="3717" tslclass="01" />
+<sign id="H7" tslsign="3722" />
+<sign id="H8" tslsign="3724" />
+<sign id="I1" tslsign="33" />
+<sign id="I2" tslsign="40" />
+<sign id="I3" tslsign="49" />
+<sign id="I4" tslsign="46" />
+<sign id="I5" tslsign="50" />
+<sign id="I5a" tslsign="42" />
+<sign id="I6" tslsign="39" />
+<sign id="I7" tslsign="54" />
+<sign id="I8" tslsign="56" />
+<sign id="I9" tslsign="35" />
+<sign id="I9a" tslsign="57" />
+<sign id="I10" tslsign="38" />
+<sign id="I10a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=7021">7021</a>
+(throws error).
+</p>
+</sign>
+<sign id="I11" tslsign="70" />
+<sign id="I11a" tslsign="" status="composition" />
+<sign id="I12" tslsign="6835" />
+<sign id="I13" tslsign="80" />
+<sign id="I14" tslsign="34" />
+<sign id="I15" tslsign="81" />
+<sign id="K1" tslsign="3725" />
+<sign id="K2" tslsign="3740" />
+<sign id="K3" tslsign="3751" />
+<sign id="K4" tslsign="3752" />
+<sign id="K5" tslsign="3755" />
+<sign id="K6" tslsign="3756" />
+<sign id="K7" tslsign="3758" />
+<sign id="K8" tslsign="3731" />
+<sign id="L1" tslsign="6" />
+<sign id="L2" tslsign="16" />
+<sign id="L2a" tslsign="" status="composition" />
+<sign id="L3" tslsign="17">
+<p>
+Not attested in hieroglyphic texts.
+</p>
+</sign>
+<sign id="L4" tslsign="21" />
+<sign id="L5" tslsign="22" />
+<sign id="L6" tslsign="24" />
+<sign id="L6a" tslsign="" status="mirroring" />
+<sign id="L7" tslsign="27" />
+<sign id="L8" tslsign="">
+<p>
+Attested, but not clear whether prototype should have legs.
+</p>
+</sign>
+<sign id="M1" tslsign="3761" />
+<sign id="M1a" tslsign="" status="composition">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=3903">3903</a>.
+</p>
+</sign>
+<sign id="M1b" tslsign="" status="composition">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=4034">4034</a>.
+Only attested in transcription.
+</p>
+</sign>
+<sign id="M2" tslsign="3907" />
+<sign id="M3" tslsign="3978" />
+<sign id="M3a" tslsign="" status="composition">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=4013">4013</a>.
+</p>
+</sign>
+<sign id="M4" tslsign="4019" />
+<sign id="M5" tslsign="4037" />
+<sign id="M6" tslsign="4053" />
+<sign id="M7" tslsign="4065" />
+<sign id="M8" tslsign="4083" />
+<sign id="M9" tslsign="4109" />
+<sign id="M10" tslsign="3762" />
+<sign id="M10a" tslsign="4069" />
+<sign id="M11" tslsign="3775" />
+<sign id="M12" tslsign="3792" />
+<sign id="M12a" tslsign="" status="composition" />
+<sign id="M12b" tslsign="" status="composition" />
+<sign id="M12c" tslsign="" status="composition" />
+<sign id="M12d" tslsign="" status="composition" />
+<sign id="M12e" tslsign="" status="composition" />
+<sign id="M12f" tslsign="" status="composition" />
+<sign id="M12g" tslsign="" status="composition" />
+<sign id="M12h" tslsign="" status="composition" />
+<sign id="M13" tslsign="3805" />
+<sign id="M14" tslsign="3824" />
+<sign id="M15" tslsign="3838" />
+<sign id="M15a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=3818">3818</a>.
+</p>
+</sign>
+<sign id="M16" tslsign="3852" />
+<sign id="M16a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=3820">3820</a>.
+</p>
+</sign>
+<sign id="M17" tslsign="3866" />
+<sign id="M17a" tslsign="" status="composition" />
+<sign id="M18" tslsign="3880" />
+<sign id="M19" tslsign="3892" />
+<sign id="M20" tslsign="3908" />
+<sign id="M21" tslsign="3921" />
+<sign id="M22" tslsign="3932" />
+<sign id="M22a" tslsign="7001" />
+<sign id="M23" tslsign="3946" />
+<sign id="M24" tslsign="3958" />
+<sign id="M24a" tslsign="3800" />
+<sign id="M25" tslsign="3970" />
+<sign id="M26" tslsign="3971" />
+<sign id="M27" tslsign="3973" />
+<sign id="M28" tslsign="3974" />
+<sign id="M28a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=3827">3827</a>.
+</p>
+</sign>
+<sign id="M29" tslsign="3975" />
+<sign id="M30" tslsign="3979" />
+<sign id="M31" tslsign="3987" />
+<sign id="M31a" tslsign="">
+<p>
+Associated with <a href="https://thotsignlist.org/mysign?id=3987">3987</a>,
+but may represent something different: M1 in vase.
+</p>
+</sign>
+<sign id="M32" tslsign="3991" />
+<sign id="M33" tslsign="3993" tslclass="00" />
+<sign id="M33a" tslsign="3993" tslclass="01" />
+<sign id="M33b" tslsign="3993" tslclass="02" />
+<sign id="M34" tslsign="3996" />
+<sign id="M35" tslsign="3998" />
+<sign id="M36" tslsign="3999" />
+<sign id="M37" tslsign="4001" />
+<sign id="M38" tslsign="4005" />
+<sign id="M39" tslsign="4008" />
+<sign id="M40" tslsign="4020" />
+<sign id="M40a" status="variant" />
+<sign id="M41" tslsign="4024" />
+<sign id="M42" tslsign="4025" />
+<sign id="M43" tslsign="4026" />
+<sign id="M44" tslsign="4029" />
+<sign id="N1" tslsign="4127" />
+<sign id="N2" tslsign="4204" tslclass="00" />
+<sign id="N3" tslsign="4204" tslclass="01" />
+<sign id="N4" tslsign="4272" />
+<sign id="N5" tslsign="4293" />
+<sign id="N6" tslsign="4312" />
+<sign id="N7" tslsign="4334" />
+<sign id="N8" tslsign="4348" />
+<sign id="N9" tslsign="4363" tslclass="00" />
+<sign id="N10" tslsign="4363" tslclass="01" />
+<sign id="N11" tslsign="4145" />
+<sign id="N12" tslsign="4161" />
+<sign id="N13" tslsign="4173" />
+<sign id="N14" tslsign="4188" />
+<sign id="N15" tslsign="4195" />
+<sign id="N16" tslsign="4196" tslclass="00" />
+<sign id="N17" tslsign="4196" tslclass="01" />
+<sign id="N18" tslsign="4201" />
+<sign id="N18a" tslsign="4131" />
+<sign id="N18b" tslsign="">
+<p>
+Unclear whether a middle insertion is appropriate to form composed sign.
+</p>
+</sign>
+<sign id="N19" tslsign="4203" />
+<sign id="N20" tslsign="4205" />
+<sign id="N21" tslsign="4213" />
+<sign id="N22" tslsign="4216" />
+<sign id="N23" tslsign="4217" />
+<sign id="N24" tslsign="4218" />
+<sign id="N25" tslsign="4227" />
+<sign id="N25a" status="variant" />
+<sign id="N26" tslsign="4228" />
+<sign id="N27" tslsign="4229" />
+<sign id="N28" tslsign="4231" />
+<sign id="N29" tslsign="4236" />
+<sign id="N30" tslsign="4238" />
+<sign id="N31" tslsign="4240" />
+<sign id="N32" tslsign="4250" />
+<sign id="N33" tslsign="4251" />
+<sign id="N33a" tslsign="4252" />
+<sign id="N34" tslsign="4253" />
+<sign id="N34a" status="variant" />
+<sign id="N35" tslsign="4255" />
+<sign id="N35a" tslsign="4256" />
+<sign id="N36" tslsign="4259" />
+<sign id="N37" tslsign="4265" tslclass="00" />
+<sign id="N37a" tslsign="4265" tslclass="03" />
+<sign id="N38" tslsign="4265" tslclass="01" />
+<sign id="N39" tslsign="4265" tslclass="02" />
+<sign id="N40" tslsign="4273" />
+<sign id="N41" tslsign="4275" tslclass="00" />
+<sign id="N42" tslsign="4275" tslclass="01" />
+<sign id="NL1" tslsign="" />
+<sign id="NL2" tslsign="" />
+<sign id="NL3" tslsign="" />
+<sign id="NL4" tslsign="" />
+<sign id="NL5" tslsign="" />
+<sign id="NL5a" tslsign="" />
+<sign id="NL6" tslsign="" />
+<sign id="NL7" tslsign="" />
+<sign id="NL8" tslsign="" />
+<sign id="NL9" tslsign="" />
+<sign id="NL10" tslsign="" />
+<sign id="NL11" tslsign="" />
+<sign id="NL12" tslsign="" />
+<sign id="NL13" tslsign="" />
+<sign id="NL14" tslsign="" />
+<sign id="NL15" tslsign="" />
+<sign id="NL16" tslsign="" />
+<sign id="NL17" tslsign="" />
+<sign id="NL17a" tslsign="" />
+<sign id="NL18" tslsign="" />
+<sign id="NL19" tslsign="" />
+<sign id="NL20" tslsign="" />
+<sign id="NU1" tslsign="" />
+<sign id="NU2" tslsign="" />
+<sign id="NU3" tslsign="" />
+<sign id="NU4" tslsign="" />
+<sign id="NU5" tslsign="" />
+<sign id="NU6" tslsign="" />
+<sign id="NU7" tslsign="" />
+<sign id="NU8" tslsign="" />
+<sign id="NU9" tslsign="" />
+<sign id="NU10" tslsign="" />
+<sign id="NU10a" tslsign="" />
+<sign id="NU11" tslsign="" />
+<sign id="NU11a" tslsign="" />
+<sign id="NU12" tslsign="" />
+<sign id="NU13" tslsign="" />
+<sign id="NU14" tslsign="" />
+<sign id="NU15" tslsign="" />
+<sign id="NU16" tslsign="" />
+<sign id="NU17" tslsign="" />
+<sign id="NU18" tslsign="" />
+<sign id="NU18a" tslsign="" />
+<sign id="NU19" tslsign="" />
+<sign id="NU20" tslsign="" />
+<sign id="NU21" tslsign="" />
+<sign id="NU22" tslsign="" />
+<sign id="NU22a" tslsign="" />
+<sign id="O1" tslsign="4374" />
+<sign id="O1a" tslsign="" status="composition">
+<p>
+</p>
+</sign>
+<sign id="O2" tslsign="4538" />
+<sign id="O3" tslsign="4706" />
+<sign id="O4" tslsign="4790" />
+<sign id="O5" tslsign="4852" />
+<sign id="O5a" tslsign="" status="mirroring" />
+<sign id="O6" tslsign="4867" />
+<sign id="O6a" tslsign="" status="typographical" />
+<sign id="O6b" tslsign="" status="typographical" />
+<sign id="O6c" tslsign="" status="typographical" />
+<sign id="O6d" tslsign="" status="typographical" />
+<sign id="O6e" tslsign="" status="typographical" />
+<sign id="O6f" tslsign="" status="typographical" />
+<sign id="O7" tslsign="4884" />
+<sign id="O8" tslsign="4896" />
+<sign id="O9" tslsign="4912" />
+<sign id="O10" tslsign="4375" />
+<sign id="O10a" tslsign="" status="composition">
+<p>
+</p>
+</sign>
+<sign id="O10b" tslsign="" status="composition" />
+<sign id="O10c" tslsign="" status="composition" />
+<sign id="O11" tslsign="4389" />
+<sign id="O12" tslsign="4403" />
+<sign id="O13" tslsign="4422" />
+<sign id="O14" tslsign="4439" />
+<sign id="O15" tslsign="4455" />
+<sign id="O16" tslsign="4469" />
+<sign id="O17" tslsign="4489" />
+<sign id="O18" tslsign="4502" />
+<sign id="O19" tslsign="4520" tslclass="00" />
+<sign id="O19a" tslsign="4520" tslclass="01" />
+<sign id="O20" tslsign="4539" />
+<sign id="O20a" status="variant" />
+<sign id="O21" tslsign="4552" />
+<sign id="O22" tslsign="4572" />
+<sign id="O23" tslsign="4590" />
+<sign id="O24" tslsign="4622" />
+<sign id="O24a" tslsign="4634" />
+<sign id="O25" tslsign="4635" />
+<sign id="O25a" status="variant" />
+<sign id="O26" tslsign="4647" />
+<sign id="O27" tslsign="4663" />
+<sign id="O28" tslsign="4676" />
+<sign id="O29" tslsign="4692" tslclass="00" />
+<sign id="O29a" tslsign="4692" tslclass="01" />
+<sign id="O30" tslsign="4707" />
+<sign id="O30a" tslsign="" status="composition" />
+<sign id="O31" tslsign="4718" />
+<sign id="O32" tslsign="4729" />
+<sign id="O33" tslsign="4746" />
+<sign id="O33a" tslsign="" status="typographical" />
+<sign id="O34" tslsign="4760" />
+<sign id="O35" tslsign="4771" />
+<sign id="O36" tslsign="4776" />
+<sign id="O36a" tslsign="" status="typographical" />
+<sign id="O36b" tslsign="" status="typographical" />
+<sign id="O36c" tslsign="" status="typographical" />
+<sign id="O36d" tslsign="" status="typographical" />
+<sign id="O37" tslsign="4783" />
+<sign id="O38" tslsign="4785" />
+<sign id="O39" tslsign="4788" />
+<sign id="O40" tslsign="4791" />
+<sign id="O41" tslsign="4803" />
+<sign id="O42" tslsign="4814" tslclass="00" />
+<sign id="O43" tslsign="4814" tslclass="01" />
+<sign id="O44" tslsign="4837" />
+<sign id="O45" tslsign="4841" tslclass="00" />
+<sign id="O46" tslsign="4841" tslclass="01" />
+<sign id="O47" tslsign="4844" />
+<sign id="O48" tslsign="4845" />
+<sign id="O49" tslsign="4848" />
+<sign id="O50" tslsign="4853" />
+<sign id="O50a" tslsign="">
+<p>
+Not attested.
+</p>
+</sign>
+<sign id="O50b" tslsign="" status="mirroring">
+<p>
+Exact form not attested.
+</p>
+</sign>
+<sign id="O51" tslsign="4854" />
+<sign id="P1" tslsign="4933" />
+<sign id="P1a" tslsign="4976" />
+<sign id="P2" tslsign="4979" />
+<sign id="P3" tslsign="5010" />
+<sign id="P3a" status="variant">
+<p>
+Not attested.
+</p>
+</sign>
+<sign id="P4" tslsign="5028" />
+<sign id="P5" tslsign="5050" />
+<sign id="P6" tslsign="5088" />
+<sign id="P7" tslsign="5110" />
+<sign id="P8" tslsign="5126" />
+<sign id="P9" tslsign="5139" />
+<sign id="P10" tslsign="4934" />
+<sign id="P11" tslsign="4948" />
+<sign id="Q1" tslsign="5153" />
+<sign id="Q2" tslsign="5177" />
+<sign id="Q3" tslsign="5195" />
+<sign id="Q4" tslsign="5207" />
+<sign id="Q5" tslsign="5217" />
+<sign id="Q6" tslsign="5218" />
+<sign id="Q7" tslsign="5228" />
+<sign id="R1" tslsign="5238" />
+<sign id="R2" tslsign="5320" />
+<sign id="R2a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=5317">5317</a>.
+Or is it same sign as <a
+href="https://thotsignlist.org/mysign?id=5315">5315</a>?
+</p>
+</sign>
+<sign id="R3" tslsign="5349" />
+<sign id="R3a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=5383">5383</a>.
+</p>
+</sign>
+<sign id="R3b" tslsign="">
+<p>
+Could be seen as variant of R3.
+</p>
+</sign>
+<sign id="R4" tslsign="5394" />
+<sign id="R5" tslsign="5410" tslclass="00" />
+<sign id="R6" tslsign="5410" tslclass="01" />
+<sign id="R7" tslsign="5439" />
+<sign id="R8" tslsign="5457" />
+<sign id="R9" tslsign="5471" />
+<sign id="R10" tslsign="5239" tslclass="00" />
+<sign id="R10a" tslsign="5239" tslclass="03" />
+<sign id="R11" tslsign="5258" />
+<sign id="R12" tslsign="5269" />
+<sign id="R13" tslsign="5282" />
+<sign id="R14" tslsign="5287" />
+<sign id="R15" tslsign="5291" />
+<sign id="R16" tslsign="5294" />
+<sign id="R16a" tslsign="">
+<p>
+Attested.
+</p>
+</sign>
+<sign id="R17" tslsign="5297" />
+<sign id="R18" tslsign="5302" />
+<sign id="R19" tslsign="5309" />
+<sign id="R20" tslsign="5321" tslclass="00" />
+<sign id="R21" tslsign="5321" tslclass="01" />
+<sign id="R22" tslsign="5334" tslclass="00" />
+<sign id="R23" tslsign="5334" tslclass="01" />
+<sign id="R24" tslsign="5338" />
+<sign id="R25" tslsign="5340" />
+<sign id="R26" tslsign="">
+<p>
+Attested.
+</p>
+</sign>
+<sign id="R27" tslsign="">
+<p>
+Not attested.
+</p>
+</sign>
+<sign id="R28" tslsign="5279" />
+<sign id="R29" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=4529">4529</a>.
+</p>
+</sign>
+<sign id="S1" tslsign="5482" />
+<sign id="S2" tslsign="5636" />
+<sign id="S2a" tslsign="">
+<p>
+Attested.
+</p>
+</sign>
+<sign id="S3" tslsign="5659" />
+<sign id="S4" tslsign="5689" />
+<sign id="S5" tslsign="5710" />
+<sign id="S6" tslsign="5727" />
+<sign id="S6a" tslsign="">
+<p>
+Attested.
+</p>
+</sign>
+<sign id="S7" tslsign="5744" />
+<sign id="S8" tslsign="5761" />
+<sign id="S9" tslsign="5773" />
+<sign id="S10" tslsign="5483" />
+<sign id="S11" tslsign="5501" />
+<sign id="S12" tslsign="5517" />
+<sign id="S13" tslsign="5537" />
+<sign id="S14" tslsign="5551" />
+<sign id="S14a" tslsign="5563" />
+<sign id="S14b" tslsign="">
+<p>
+Not attested.
+</p>
+</sign>
+<sign id="S15" tslsign="5567" />
+<sign id="S16" tslsign="5582" />
+<sign id="S17" tslsign="5593" />
+<sign id="S17a" tslsign="5603" />
+<sign id="S18" tslsign="5606" />
+<sign id="S19" tslsign="5622" />
+<sign id="S20" tslsign="5637" />
+<sign id="S21" tslsign="5643" />
+<sign id="S22" tslsign="5645" />
+<sign id="S23" tslsign="5647" />
+<sign id="S24" tslsign="5648" />
+<sign id="S25" tslsign="5649" />
+<sign id="S26" tslsign="5650" />
+<sign id="S26a" tslsign="">
+<p>
+Merged into <a href="https://thotsignlist.org/mysign?id=4201">4201</a>.
+</p>
+</sign>
+<sign id="S26b" tslsign="">
+<p>
+Only attested in facsimile.
+</p>
+</sign>
+<sign id="S27" tslsign="5651" />
+<sign id="S28" tslsign="5653" />
+<sign id="S29" tslsign="5655" />
+<sign id="S30" tslsign="5660" />
+<sign id="S31" tslsign="5669" />
+<sign id="S32" tslsign="5670" />
+<sign id="S33" tslsign="5672" />
+<sign id="S34" tslsign="5673" />
+<sign id="S35" tslsign="5676" tslclass="01" />
+<sign id="S35a" status="variant" />
+<sign id="S36" tslsign="5676" tslclass="00" />
+<sign id="S37" tslsign="5681" />
+<sign id="S38" tslsign="5686" />
+<sign id="S39" tslsign="5688" />
+<sign id="S40" tslsign="5690" />
+<sign id="S41" tslsign="5691" />
+<sign id="S42" tslsign="5692" />
+<sign id="S43" tslsign="5694" />
+<sign id="S44" tslsign="5699" />
+<sign id="S45" tslsign="5701" />
+<sign id="S46" tslsign="5719" />
+<sign id="T1" tslsign="5786" />
+<sign id="T2" tslsign="5859" />
+<sign id="T3" tslsign="5915" />
+<sign id="T3a" tslsign="">
+<p>
+Attested.
+</p>
+</sign>
+<sign id="T4" tslsign="5938" />
+<sign id="T5" tslsign="5948" />
+<sign id="T6" tslsign="5962" />
+<sign id="T7" tslsign="5981" />
+<sign id="T7a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=5996">5996</a>.
+</p>
+</sign>
+<sign id="T8" tslsign="6000" tslclass="00" />
+<sign id="T8a" tslsign="6000" tslclass="01" />
+<sign id="T9" tslsign="6022" tslclass="00" />
+<sign id="T9a" tslsign="6022" tslclass="01" />
+<sign id="T10" tslsign="5787" />
+<sign id="T11" tslsign="5800" />
+<sign id="T11a" tslsign="">
+<p>
+There are doubts about desired prototype.
+</p>
+</sign>
+<sign id="T12" tslsign="5817" />
+<sign id="T13" tslsign="5831" />
+<sign id="T14" tslsign="5844" tslclass="00" />
+<sign id="T15" tslsign="5844" tslclass="01" />
+<sign id="T16" tslsign="5849" />
+<sign id="T16a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=5850">5850</a>.
+</p>
+</sign>
+<sign id="T17" tslsign="5851" />
+<sign id="T18" tslsign="5852" />
+<sign id="T19" tslsign="5854" />
+<sign id="T20" tslsign="5854" />
+<sign id="T21" tslsign="5869" />
+<sign id="T22" tslsign="5881" tslclass="00" />
+<sign id="T23" tslsign="5881" tslclass="01" />
+<sign id="T24" tslsign="5888" />
+<sign id="T25" tslsign="5893" />
+<sign id="T26" tslsign="5899" tslclass="00" />
+<sign id="T27" tslsign="5899" tslclass="02" />
+<sign id="T28" tslsign="5909" />
+<sign id="T29" tslsign="5911" />
+<sign id="T30" tslsign="5916" />
+<sign id="T31" tslsign="5919" />
+<sign id="T32" tslsign="5921" />
+<sign id="T32a" tslsign="" status="composition" />
+<sign id="T33" tslsign="5924" />
+<sign id="T33a" tslsign="" status="composition" />
+<sign id="T34" tslsign="5926" tslclass="00" />
+<sign id="T35" tslsign="5926" tslclass="01" />
+<sign id="T36" tslsign="5928" />
+<sign id="U1" tslsign="6042" tslclass="00" />
+<sign id="U2" tslsign="6042" tslclass="01" />
+<sign id="U3" tslsign="6154" />
+<sign id="U4" tslsign="6197" tslclass="00" />
+<sign id="U5" tslsign="6197" tslclass="01" />
+<sign id="U6" tslsign="6224" tslclass="00" />
+<sign id="U6a" tslsign="" status="rotation" />
+<sign id="U6b" tslsign="" status="mirroring,rotation" />
+<sign id="U7" tslsign="6224" tslclass="01" />
+<sign id="U8" tslsign="6250" />
+<sign id="U9" tslsign="6261" />
+<sign id="U10" tslsign="6043" />
+<sign id="U11" tslsign="6058" />
+<sign id="U12" tslsign="6069" />
+<sign id="U13" tslsign="6081" />
+<sign id="U14" tslsign="6090" />
+<sign id="U15" tslsign="6092" />
+<sign id="U16" tslsign="6094" />
+<sign id="U17" tslsign="6099" tslclass="00" />
+<sign id="U18" tslsign="6099" tslclass="01" />
+<sign id="U19" tslsign="6101" tslclass="00" />
+<sign id="U20" tslsign="6101" tslclass="01" />
+<sign id="U21" tslsign="6115" />
+<sign id="U22" tslsign="6117" />
+<sign id="U23" tslsign="6120" />
+<sign id="U23a" status="variant">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=6121">6121</a>.
+</p>
+</sign>
+<sign id="U24" tslsign="6126" tslclass="00" />
+<sign id="U25" tslsign="6126" tslclass="01" />
+<sign id="U26" tslsign="6146" tslclass="00" />
+<sign id="U27" tslsign="6146" tslclass="01" />
+<sign id="U28" tslsign="6151" tslclass="00" />
+<sign id="U29" tslsign="6151" tslclass="01" />
+<sign id="U29a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=6153">6153</a>.
+</p>
+</sign>
+<sign id="U30" tslsign="6155" />
+<sign id="U31" tslsign="6158" />
+<sign id="U32" tslsign="6159" />
+<sign id="U32a" tslsign="">
+<p>
+Attested.
+</p>
+</sign>
+<sign id="U33" tslsign="6163" />
+<sign id="U34" tslsign="6166" />
+<sign id="U35" tslsign="6168" />
+<sign id="U36" tslsign="6170" />
+<sign id="U37" tslsign="6173" />
+<sign id="U38" tslsign="6175" />
+<sign id="U39" tslsign="6179" />
+<sign id="U40" tslsign="6198" />
+<sign id="U41" tslsign="6199" />
+<sign id="U42" tslsign="6065">
+<p>
+Or <a href="https://thotsignlist.org/mysign?id=4717">4717</a>?
+</p>
+</sign>
+<sign id="V1" tslsign="6282" />
+<sign id="V1a" tslsign="" status="composition" />
+<sign id="V1b" tslsign="" status="composition" />
+<sign id="V1c" tslsign="" status="composition" />
+<sign id="V1d" tslsign="" status="composition" />
+<sign id="V1e" tslsign="" status="composition" />
+<sign id="V1f" tslsign="" status="composition" />
+<sign id="V1g" tslsign="" status="composition" />
+<sign id="V1h" tslsign="" status="composition" />
+<sign id="V1i" tslsign="" status="composition" />
+<sign id="V2" tslsign="6343" />
+<sign id="V2a" tslsign="">
+<p>
+Cf. <a href="https://thotsignlist.org/mysign?id=3130">3130</a>.
+</p>
+</sign>
+<sign id="V3" tslsign="6379" />
+<sign id="V4" tslsign="6406" />
+<sign id="V5" tslsign="6420" />
+<sign id="V6" tslsign="6433" />
+<sign id="V7" tslsign="6447" />
+<sign id="V7a" status="variant" />
+<sign id="V7b" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=6419">6419</a>.
+Only attested in hieratic.
+</p>
+</sign>
+<sign id="V8" tslsign="6458" />
+<sign id="V9" tslsign="6469" />
+<sign id="V10" tslsign="6283" />
+<sign id="V11" tslsign="6296" />
+<sign id="V11a" tslsign="" status="typographical" />
+<sign id="V11b" tslsign="" status="typographical" />
+<sign id="V11c" tslsign="" status="typographical" />
+<sign id="V12" tslsign="6310" />
+<sign id="V12a" status="variant">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=3689">3689</a>.
+</p>                                                                    
+</sign>
+<sign id="V12b" status="variant" />
+<sign id="V13" tslsign="6321" />
+<sign id="V14" tslsign="6332" />
+<sign id="V15" tslsign="6334" />
+<sign id="V16" tslsign="6335" />
+<sign id="V17" tslsign="6338" tslclass="00" />
+<sign id="V18" tslsign="6338" tslclass="01" />
+<sign id="V19" tslsign="6342" />
+<sign id="V20" tslsign="6344" />
+<sign id="V20a" tslsign="" status="composition" />
+<sign id="V20b" tslsign="" status="composition" />
+<sign id="V20c" tslsign="" status="composition" />
+<sign id="V20d" tslsign="" status="composition" />
+<sign id="V20e" tslsign="" status="composition" />
+<sign id="V20f" tslsign="" status="composition" />
+<sign id="V20g" tslsign="" status="composition" />
+<sign id="V20h" tslsign="" status="composition" />
+<sign id="V20i" tslsign="" status="composition" />
+<sign id="V20j" tslsign="" status="composition" />
+<sign id="V20k" tslsign="" status="composition" />
+<sign id="V20l" tslsign="" status="composition" />
+<sign id="V21" tslsign="6353" />
+<sign id="V22" tslsign="6359" tslclass="00" />
+<sign id="V23" tslsign="6359" tslclass="01" />
+<sign id="V23a" status="variant">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=6361">6361</a>.
+</p>
+</sign>
+<sign id="V24" tslsign="6363" tslclass="00" />
+<sign id="V25" tslsign="6363" tslclass="01" />
+<sign id="V26" tslsign="6365" tslclass="00" />
+<sign id="V27" tslsign="6365" tslclass="01" />
+<sign id="V28" tslsign="6369" />
+<sign id="V28a" tslsign="6449" />
+<sign id="V29" tslsign="6375" />
+<sign id="V29a" tslsign="" status="composition">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=6470">6470</a>.
+</p>
+</sign>
+<sign id="V30" tslsign="6380" />
+<sign id="V30a" status="variant" />
+<sign id="V31" tslsign="6381" tslclass="00" />
+<sign id="V31a" tslsign="6381" tslclass="01" />
+<sign id="V32" tslsign="6385" />
+<sign id="V33" tslsign="6391" tslclass="00" />
+<sign id="V33a" tslsign="">
+<p>
+Attested.
+</p>
+</sign>
+<sign id="V34" tslsign="6391" tslclass="01" />
+<sign id="V35" tslsign="6391" tslclass="02" />
+<sign id="V36" tslsign="6394" />
+<sign id="V37" tslsign="6402" />
+<sign id="V37a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=2935">2935</a>.
+</p>
+</sign>
+<sign id="V38" tslsign="6403" />
+<sign id="V39" tslsign="6404" />
+<sign id="V40" tslsign="" status="rotation" />
+<sign id="V40a" tslsign="" status="composition" />
+<sign id="W1" tslsign="6480" />
+<sign id="W2" tslsign="6534" />
+<sign id="W3" tslsign="6580" />
+<sign id="W3a" status="variant" />
+<sign id="W4" tslsign="6600" />
+<sign id="W5" tslsign="6614" />
+<sign id="W6" tslsign="6628" />
+<sign id="W7" tslsign="6640" />
+<sign id="W8" tslsign="6653" />
+<sign id="W9" tslsign="6664" />
+<sign id="W9a" tslsign="" status="mirroring" />
+<sign id="W10" tslsign="6481" />
+<sign id="W10a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=6492">6492</a>.
+</p>
+</sign>
+<sign id="W11" tslsign="6495" tslclass="00" />
+<sign id="W12" tslsign="6495" tslclass="01" />
+<sign id="W13" tslsign="6515" />
+<sign id="W14" tslsign="6516" />
+<sign id="W14a" tslsign="" status="composition" />
+<sign id="W15" tslsign="6518" />
+<sign id="W16" tslsign="6521" />
+<sign id="W17" tslsign="6523" tslclass="00" />
+<sign id="W17a" tslsign="6523" tslclass="02" />
+<sign id="W18" tslsign="6523" tslclass="01" />
+<sign id="W18a" status="variant">
+<p>
+Possibly does not exist. (Added to Unicode for uniformity with W017A ?)
+</p>
+</sign>
+<sign id="W19" tslsign="6531" />
+<sign id="W20" tslsign="6535" />
+<sign id="W21" tslsign="6545" />
+<sign id="W22" tslsign="6559" />
+<sign id="W23" tslsign="6568" />
+<sign id="W24" tslsign="6571" />
+<sign id="W24a" tslsign="" status="composition" />
+<sign id="W25" tslsign="6572" />
+<sign id="X1" tslsign="6678" />
+<sign id="X2" tslsign="6686" tslclass="00" />
+<sign id="X3" tslsign="6686" tslclass="01" />
+<sign id="X4" tslsign="6695" tslclass="00">
+<p>
+Prototype should be adjusted.
+</p>
+</sign>
+<sign id="X4a" status="variant" />
+<sign id="X4b" tslsign="6695" tslclass="01" />
+<sign id="X5" tslsign="6703" />
+<sign id="X6" tslsign="6705" />
+<sign id="X6a" tslsign="" status="variant" />
+<sign id="X7" tslsign="6710" />
+<sign id="X8" tslsign="6711" />
+<sign id="X8a" status="variant" />
+<sign id="Y1" tslsign="6712" tslclass="00" />
+<sign id="Y1a" tslsign="6712" tslclass="01" />
+<sign id="Y2" tslsign="6712" tslclass="02" />
+<sign id="Y3" tslsign="6740" tslclass="00" />
+<sign id="Y4" tslsign="6740" tslclass="01" />
+<sign id="Y5" tslsign="6746" />
+<sign id="Y6" tslsign="6748" />
+<sign id="Y7" tslsign="6749" />
+<sign id="Y8" tslsign="6751" />
+<sign id="Z1" tslsign="6753" />
+<sign id="Z2" tslsign="6781" tslclass="00" />
+<sign id="Z2a" status="variant" />
+<sign id="Z2b" status="variant" />
+<sign id="Z2c" tslsign="6781" tslclass="01" />
+<sign id="Z2d" tslsign="6781" tslclass="02" />
+<sign id="Z3" tslsign="6799" />
+<sign id="Z3a" tslsign="6810" />
+<sign id="Z3b" status="variant" />
+<sign id="Z4" tslsign="6811" />
+<sign id="Z4a" tslsign="6812" />
+<sign id="Z5" tslsign="6814" />
+<sign id="Z5a" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=6815">6815</a>.
+</p>
+</sign>
+<sign id="Z6" tslsign="6816" />
+<sign id="Z7" tslsign="6818" />
+<sign id="Z8" tslsign="6819" />
+<sign id="Z9" tslsign="6820" />
+<sign id="Z10" tslsign="6754" />
+<sign id="Z11" tslsign="6764" />
+<sign id="Z12" tslsign="">
+<p>
+Provisionally <a href="https://thotsignlist.org/mysign?id=6772">6772</a>.
+</p>
+</sign>
+<sign id="Z13" tslsign="">
+<p>
+Could be used for an abstract circle not representing any particular object.
+</p>
+</sign>
+<sign id="Z14" tslsign="">
+<p>
+Hard to assign a precise meaning.
+</p>
+</sign>
+<sign id="Z15" tslsign="">
+<p>
+Merged into <a href="https://thotsignlist.org/mysign?id=6753">6753</a>?
+</p>
+</sign>
+<sign id="Z15a" tslsign="" status="composition" />
+<sign id="Z15b" tslsign="" status="composition" />
+<sign id="Z15c" tslsign="" status="composition" />
+<sign id="Z15d" tslsign="" status="composition" />
+<sign id="Z15e" tslsign="" status="composition" />
+<sign id="Z15f" tslsign="" status="composition" />
+<sign id="Z15g" tslsign="" status="composition" />
+<sign id="Z15h" tslsign="" status="composition" />
+<sign id="Z15i" tslsign="" status="composition" />
+<sign id="Z16" tslsign="rotation">
+<p>
+Merged into <a href="https://thotsignlist.org/mysign?id=6753">6753</a>?
+</p>
+</sign>
+<sign id="Z16a" tslsign="" status="composition" />
+<sign id="Z16b" tslsign="" status="composition" />
+<sign id="Z16c" tslsign="" status="composition" />
+<sign id="Z16d" tslsign="" status="composition" />
+<sign id="Z16e" tslsign="" status="composition" />
+<sign id="Z16f" tslsign="" status="composition" />
+<sign id="Z16g" tslsign="" status="composition" />
+<sign id="Z16h" tslsign="" status="composition" />
+<sign id="Aa1" tslsign="931" />
+<sign id="Aa2" tslsign="953" />
+<sign id="Aa3" tslsign="1000" />
+<sign id="Aa4" tslsign="1015" />
+<sign id="Aa5" tslsign="1028" />
+<sign id="Aa6" tslsign="1043" />
+<sign id="Aa7" tslsign="1054" />
+<sign id="Aa7a" tslsign="" status="mirroring" />
+<sign id="Aa7b" tslsign="">
+<p>
+May represent leg of cow.
+</p>
+</sign>
+<sign id="Aa8" tslsign="1065" />
+<sign id="Aa9" tslsign="1069" />
+<sign id="Aa10" tslsign="932" />
+<sign id="Aa11" tslsign="937" tslclass="00" />
+<sign id="Aa12" tslsign="937" tslclass="01" />
+<sign id="Aa13" tslsign="947" tslclass="01" />
+<sign id="Aa14" tslsign="947" tslclass="02" />
+<sign id="Aa15" tslsign="947" tslclass="00" />
+<sign id="Aa16" tslsign="948" />
+<sign id="Aa17" tslsign="949" tslclass="00" />
+<sign id="Aa18" tslsign="949" tslclass="01" />
+<sign id="Aa19" tslsign="952" />
+<sign id="Aa20" tslsign="954" />
+<sign id="Aa21" tslsign="958" />
+<sign id="Aa22" tslsign="962" />
+<sign id="Aa23" tslsign="963" tslclass="00" />
+<sign id="Aa24" tslsign="963" tslclass="01" />
+<sign id="Aa25" tslsign="987" />
+<sign id="Aa26" tslsign="989" />
+<sign id="Aa27" tslsign="990" />
+<sign id="Aa28" tslsign="998" tslclass="00" />
+<sign id="Aa29" tslsign="998" tslclass="01" />
+<sign id="Aa30" tslsign="1001" tslclass="00" />
+<sign id="Aa31" tslsign="1001" tslclass="01" />
+<sign id="Aa32" tslsign="1003" />
+
+</signlist>
