@@ -24,7 +24,7 @@ Java 11 version has only been tested on a Mac, Java 8 (the jar file is in the Ja
 
 Requires Java JRE installed on the computer
 
-Build with Java JDK 11, but should work with all JRE versions above 1.9. The Java 8 version only works in JRE 1.8.
+Build with Java JDK 11, but should work with all JRE versions above 1.9. For Java 8 version (JRE 1.8) the version in folder Java8 is needed.
 
 Some control characters might be shown as question marks in the tool but should work in the files created (depending on your OS). The tool uses Aegyptus font, but for reading the unicode txt-file, I recommend the newGardiner (https://mjn.host.cs.st-andrews.ac.uk/egyptian/fonts/newgardiner.html).
 
