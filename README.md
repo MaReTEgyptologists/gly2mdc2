@@ -34,15 +34,16 @@ Large files with long texts take time to process and make the tool unusable whil
 
 Gly2Mdc does NOT support the absolute placing of the signs when converted to Unicode (and JSON). For converting files with manually placed signs to accurate Unicode, HieroJax (https://nederhof.github.io/hierojax/mdcconversion.html) can be used. In Gly2Mdc the manually placed signs are simply presented one after another. Other placements are represented by Unicode format control characters, but the precision cannot always be guaranteed.
 
-Since parentheses indicate croup in JSesh, the white spaces inside them have been changed to * (i.e. signs next to each other).
+Since parentheses indicate group in JSesh, the white spaces inside them have been changed to * (i.e. signs next to each other).
 
 In Unicode, shading control characters targets only one character; therefore, the shading marked in JSesh has been converted to target each of the signs in a group. For example, p:n#12 (upper part of group shaded) becomes p#1234:n. All characters between #b - #e get shaded with #1234. For groups with more than 2 levels (e.g. p:n:n:n), the shading may be slightly off.
 
-All the different ways to indicate ligatures after the sign in JSesh (&&& && & _& **) are changed to &. A list (src/resources/myIns.txt) made on the bases of https://nederhof.github.io/hierojax/insertionlist.html is used for determining which side of a sign another sign should go to in a ligature. Gly2Mdc uses the ligatures that are specified in the ligatures.txt file in the JSesh source code + D&d.
+All the different ways to indicate ligatures after the sign in JSesh (&&& && & _& **) are changed to &. A list (src/resources/myIns.txt) made on the bases of https://nederhof.github.io/hierojax/insertionlist.html is used for determining which side of a sign another sign should go to in a ligature. Gly2Mdc also uses the ligatures that are specified in the ligatures.txt file in the JSesh source code + D&d.
 
 ## **JSON format contains the following**
 
 - textName = 1. line shown in JSesh
+- orientation = ++JSesh_page_direction (right-to-left or left-to-right) and ++JSesh_page_orientation (HORIZONTAL or VERTICAL)
 - infos = all the other lines before the actual hieroglyphic text starts
 - items	= signs or comment lines
 
@@ -61,13 +62,4 @@ Each sign has (when applicable):
 - size		= if the sign has an attribute that defines its size, e.g. \85
 
 
-## **TO DO:**
-
-INFO button
-
-Updated version loaded in January 2025:
-
-~~Test on a Windows computer~~
-
-~~Add red colour support~~
 
