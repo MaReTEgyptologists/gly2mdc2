@@ -61,5 +61,5 @@ Each sign has (when applicable):
 - rotation	= if the sign has an attribute for rotating it, e.g. \R270
 - size		= if the sign has an attribute that defines its size, e.g. \85
 
-
+## An updated version uploaded May 3, 2025
 
