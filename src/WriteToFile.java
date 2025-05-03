@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package com.marete.gly2mdc2;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -23,10 +24,10 @@ public class WriteToFile {
         if (!file.exists()) {
             file.createNewFile();
         }
-        else {
+        /*else {
             
             Files.deleteIfExists(file.toPath());
-        }
+        }*/
         try {
             writer = new BufferedWriter(new FileWriter(file, true));
         }

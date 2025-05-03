@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
+package com.marete.gly2mdc2;
 
 /**
  *
@@ -57,7 +57,8 @@ public class Sign {
     }
 
     public String getUni() {
-        return unicode;
+        return makeUnicode();
+        //return unicode;
     }
 
     public String getTsl() {
@@ -93,13 +94,17 @@ public class Sign {
         return insert;
     }
     
-    private void makeUnicode() {
+    private String makeUnicode() {
         int code;
+        char[] charArray;
+        String thisUni = "";
         String[] uniArray = codepoint.split(" \\+ ");
         for (String unity : uniArray) {
             code = Integer.parseInt(unity, 16);
-            unicode += Character.toString(code);
+            charArray = Character.toChars(code);
+            thisUni += String.copyValueOf(charArray);
         }
+        return thisUni;
     }
     
 }

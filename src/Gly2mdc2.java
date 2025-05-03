@@ -2,7 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package com.marete.gly2mdc2;
 
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.awt.BorderLayout;
@@ -15,29 +18,37 @@ import java.awt.FontFormatException;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
 import java.awt.Insets;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
-import java.io.FileInputStream;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Map;
 import java.util.Stack;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -58,7 +69,8 @@ import javax.swing.border.EmptyBorder;
                 1. cleaned Manuel de Codage encoding
                 2. stripped Manuel de Codage encoding in Ramses Transliteration Corpus style
                 3. unicode characters.
-                Additionally makes a JSON-format text where the signs have been annotated with encoding, unicode, and Thot Sign List designations
+                Additionally makes a JSON-format text where the signs have been annotated with encoding, Unicode, and 
+                Thot Sign List designations
  *
  */
 public class Gly2mdc2 {
@@ -75,20 +87,24 @@ public class Gly2mdc2 {
     private static String origMdc;
     private static String cleanedMdc;
     private static String unicodes;
-    private static int lineCount;
     private static String dirToOpen;
+    private static String prevFile;
     
     
-    public Gly2mdc2() {
+    public Gly2mdc2() throws IOException {
         
         JFrame frame = new JFrame();
         frame.setTitle("Gly2mdc2");
+        //frame.setIconImage(frameImage);
         frame.setLayout(new BorderLayout());
-        frame.setSize(new Dimension(800, 850));
+        frame.setSize(new Dimension(1100, 850));
         frame.getContentPane().setBackground(Color.WHITE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(true);
+        /*URL resource = frame.getClass().getResource("/resources/logo.png");
+        BufferedImage image = ImageIO.read(resource);*/
+        frame.setIconImage(new ImageIcon("/Users/hwikgren/NetBeansProjects/Gly2mdc2/src/main/resources/logo.png").getImage());
         frame.setVisible(true);
         
         JPanel mainPanel = new JPanel(new BorderLayout());
@@ -113,7 +129,7 @@ public class Gly2mdc2 {
         JToolBar toolbar = new JToolBar();
         toolbar.add(fileDialogButton);
         toolbar.add(Box.createHorizontalGlue());
-        toolbar.add(infoButton, codepoints);
+        //toolbar.add(infoButton, codepoints);
         toolbar.addSeparator(); 
         
         //panel with toolbar, in upperPanel>mainPanel
@@ -193,7 +209,7 @@ public class Gly2mdc2 {
         //OPEN FILE TO VIEW
         FileDialog openDialog = new FileDialog(new Frame(), "Choose a file", FileDialog.LOAD);
         String[] fileToOpen = new String[1];
-        String file = "";
+        prevFile = "";
         //always open in home directory
         //dirToOpen=("~/");
         openDialog.setDirectory(dirToOpen);
@@ -202,7 +218,12 @@ public class Gly2mdc2 {
             openDialog.setVisible(true);
             fileToOpen[0] = openDialog.getDirectory()+openDialog.getFile();
             if (!fileToOpen[0].equals("nullnull")) {
-                processText(fileToOpen[0]);
+                prevFile = fileToOpen[0];
+                try {
+                    processText(fileToOpen[0]);
+                } catch (IOException ex) {
+                    Logger.getLogger(Gly2mdc2.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 //remove previous texts from the textAreas
                 if (mdcTextArea.getLineCount() != 0) {
                     mdcTextArea.removeAll();
@@ -227,42 +248,38 @@ public class Gly2mdc2 {
         FileDialog saveDialog = new FileDialog(new Frame(), "Save file as...(extension txt/json will be added)", FileDialog.SAVE);
 
         saveDialogButton.addActionListener((e) -> {
-            saveDialog.setDirectory(fileToOpen[0].replaceFirst("/[^/]*$", ""));
-            saveDialog.setFile(fileToOpen[0].replaceAll("[^/]*/", "").replaceFirst("\\..*", ""));
-            saveDialog.setVisible(true);
-            String dir = saveDialog.getDirectory();
-            String filename = saveDialog.getFile();
-            String toFile;
-            if (checkMdc.isSelected()) {
-                toFile = mdcTextArea.getText();
-                try {
-                    saveToFile(toFile, dir, "mdc_"+filename+".txt");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gly2mdc2.class.getName()).log(Level.SEVERE, null, ex);
+            if (!checkMdc.isSelected() && !modifiedMdc.isSelected() && !uniMdc.isSelected() && !json.isSelected()) {
+                    JOptionPane.showMessageDialog(null, "Select file format(s) to save!");
                 }
-            }
-            if (modifiedMdc.isSelected()) {
-                toFile = modifiedTextArea.getText();
-                try {
-                    saveToFile(toFile, dir, "pureMdc"+filename+".txt");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gly2mdc2.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            if (uniMdc.isSelected()) {
-                toFile = unicodeTextArea.getText();
-                try {
-                    saveToFile(toFile, dir, "unicode_"+filename+".txt");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gly2mdc2.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            if (json.isSelected()) {
-                toFile = jsonTextArea.getText();
-                try {
-                    saveToFile(toFile, dir, filename+".json");
-                } catch (IOException ex) {
-                    Logger.getLogger(Gly2mdc2.class.getName()).log(Level.SEVERE, null, ex);
+            else {
+                saveDialog.setDirectory(prevFile.replaceFirst("/[^/]*$", ""));
+                saveDialog.setFile(prevFile.replaceAll("[^/]*/", "").replaceFirst("\\.gly", ""));
+                saveDialog.setVisible(true);
+                String dir = saveDialog.getDirectory();
+                String filename = saveDialog.getFile();
+                if (filename != null && !filename.equals("nullnull")) {
+                    String toFile;
+                    if (checkMdc.isSelected()) {
+                        toFile = mdcTextArea.getText();
+                        saveFile(toFile, dir, filename, "mdc");
+                    }
+                    if (modifiedMdc.isSelected()) {
+                        toFile = modifiedTextArea.getText();
+                        saveFile(toFile, dir, filename, "pureMdc");
+                    }
+                    if (uniMdc.isSelected()) {
+                        toFile = unicodeTextArea.getText();
+                        saveFile(toFile, dir, filename, "unicode");
+                    }
+                    if (json.isSelected()) {
+                        toFile = jsonTextArea.getText();
+                        try {
+                            saveToFile(toFile, dir, filename+".json");
+                        } catch (Exception ex) {
+                            Logger.getLogger(Gly2mdc2.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+
                 }
             }
          });
@@ -291,11 +308,11 @@ public class Gly2mdc2 {
         String info = String.format("<html><body style=\"text-align: justify;  text-justify: inter-word;\">%s</body></html>",""
                 + "  Gly2Mdc version 2 converts a <i>.gly</i> file produced with JSesh to 3 different texts: <br/>"
                 + "         &emsp 1. cleaned Manuel de Codage encoding<br/>"
-                + "         &emsp 2. stripped Manuel de Codage encoding in Ramses Transliteration Corpus style<br/>"
-                + "         &emsp 3. unicode characters.<br/>"
-                + "  Additionally makes a JSON-format text where the signs have been annotated with encoding, unicode, and Thot Sign List designations.\n"
+                + "         &emsp 2. stripped Manuel de Codage encoding in Ramses Transliteration Corpus and TLA database dump style<br/>"
+                + "         &emsp 3. unicode hieroglyphic characters.<br/>"
+                + "  Additionally makes a JSON-format text where the signs have been annotated with encoding, Unicode, and Thot Sign List designations.\n"
                 + "<br/>"
-                + "  Select file with extension .gly to view. You can then choose which versions to save to file.<br/>");
+                + "  Select file with extension .gly to view. You can then choose which version(s) to save to file.<br/>");
 
         JLabel label = new JLabel(info);
         Dimension size = label.getPreferredSize();
@@ -336,25 +353,31 @@ public class Gly2mdc2 {
         return textArea;
     }
     
-    
+    private static void saveFile(String toFile, String dir, String filename, String which) {
+        try {
+            saveToFile(toFile, dir, filename+"_"+which+".txt");
+        } catch (Exception ex) {
+            Logger.getLogger(Gly2mdc2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     private static String getGson() {
         Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
         String jsonOutput = gson.toJson(model);
-        return jsonOutput;
+        return jsonOutput.replaceAll("\\\\\\\\", "\\\\");
     }
     
-    public static String getMdc(String filename) {
+    public static String getMdc(String filename) throws IOException {
         String longString = readBytes(filename);
-        String[] lines = longString.split("\n"), lineArray;
-        String line, toFile = "", sign, kind;
+        String[] lines = longString.split("\n");
+        String line, toFile = "";
         for (int i=0; i<lines.length; i++) {
             line = lines[i];
             if (!line.startsWith("++")) {
                 line = line.replaceFirst("\\-\\!", "");
                 line = line.replaceAll("_?\\-", " ");
                 if (line.startsWith("|")) {
-                    String lineNr = getMatch(line, "\\|([^ ]*) ");
-                    line = line.replaceFirst("\\|[^ ]* ", "");
+                    String lineNr = getMatch(line, "\\|([^-]*)\\-");
+                    line = line.replaceFirst("\\|[^-]*\\-", "");
                     line = lineNr+" - "+line;
                 }
                 toFile += line+"\n";
@@ -364,291 +387,317 @@ public class Gly2mdc2 {
     }
     
     //read the text from the file that was selected
-    public static void processText(String filename) {
+    public static void processText(String filename) throws UnsupportedEncodingException, IOException {
         origMdc = "";
         cleanedMdc = "";
         latestLine = "";
         unicodes = "";
-        lineCount = 0;
         model = new Model();
         String longString = readBytes(filename);
         String[] lines = longString.split("\n");
         String line;
+        boolean infosEnded = false;
+        int count = 0;
         for (String line1 : lines) {
+            
             line = line1;
             //ignore lines meant for the hieroglyphic text editor
             if (!line.startsWith("++")) {
-                line = line.replaceFirst("\\-?!!?", "");
-                line = line.replaceFirst("_$", "");
-                if (!line.startsWith("+")) {
-                    line = line.replaceAll("_?\\-", " ");
-                }
-                String lineNr = "";
+                
+                line = line.replaceFirst("(\\-?!!?)|(_$)", "");
+                
                 //if line starts with | it has the line number or designation in the beginning
+                String lineNr = "";
                 if (line.startsWith("|")) {
-                    lineNr = getMatch(line, "\\|([^ ]*) ");
-                    line = line.replaceFirst("\\|[^ ]* ", "");
+                    lineNr = getMatch(line, "(\\|[^-]*)\\-");
+                    latestLine = lineNr;
                 }
+
                 //comments
                 if (line.startsWith("+")) {
-                    line = line.replaceAll("\\+s", " ");
-                    line = line.replaceAll("\\+[libtchgr]", " ");
-                    if (!model.getTextName().equals("")) {
-                        model.setInfo(line);
+                    if (!infosEnded) {
+                        line = cleanLine(line, false);
                     }
-                    if (model.getTextName().equals("")) {
-                        model.setTextName(line);
+                    else {
+                        ++count;
+                        line = line.replaceFirst("^\\|[^-]*\\-", "");
+                        line = cleanLine(line, true);
+                        Line lineToAdd = new Line(count, lineNr);
+                        Item item = new Item(String.valueOf(count), 1, "", "", "", "", "", "", line);
+                        lineToAdd.setItem(item);
+                        model.setLine(lineToAdd);
+
                     }
-                    line = "+"+line;
-                    
+                    origMdc += line+"\n";
+                    cleanedMdc += line+"\n";
+                    unicodes += line+"\n";
+                    continue;
                 }
-                
+                else {
+                    ++count;
+                    line = line.replaceFirst("^\\|[^\\-]*\\-", "");
+                    line = line.replaceAll("_*\\-", " ");
+                    infosEnded = true;
+                }
                 line = line.replaceAll(" +", " ");
+                
                 //send to line to converted to "pure" encoding
-                processMdc(line, lineNr);
-                if (!lineNr.equals("")) {
-                    line = lineNr+" - "+line;
+                processMdc(line);
+                String mdcLineNr = "";
+                if (!lineNr.isEmpty()) {
+                    mdcLineNr = lineNr+" - ";
                 }
+                origMdc += mdcLineNr+line.trim()+"\n";
+                line = cleanLine(line, true);
+                
                 //send line to be converted to Unicode
-                processUnicode(line);
-
-                line = line.replaceFirst("\\+ ?", "");
-
-                origMdc += line.trim()+"\n";
+                processUnicode(line, lineNr, count);    
+            }
+            else {
+                if (line.contains("JSesh_page_direction")) {
+                    model.setOrientation(getMatch(line, "direction ([^ ]*) ").toLowerCase());
+                }
+                else if (line.contains("JSesh_page_orientation")) {
+                    model.setOrientation(getMatch(line, "orientation ([^ ]*) ").toLowerCase());
+                }
             }
         }
     }
     
+    
     //convert the encoding to "pure" encoding without control character and transliteration
-    private static void processMdc(String line, String lineNr) {
-        //ignore comment lines
-        if (!line.startsWith("+")) {
-            String tempLine = "", tempMdc;
-            line = line.replaceAll("\\+s", " ");
-            line = line.replaceAll("[:*&^\\[\\]_']", " ");
-            line = line.replaceAll("\\\\ ", " ");
-            line = line.replaceAll("\\{\\{[^\\}]*\\}\\}", "");
-            line = line.replaceAll("<[^ ]*", "");
-            line = line.replaceAll("[^ ]*>", "");
-            line = line.replaceAll("\\.\\.", "\t");
-            line = line.replaceAll("\\.", "  ");
-
-            line = line.replaceAll("[\\(\\)]", "");
-            line = line.replaceAll("#[^ ]*", " ");
-            line = line.replaceAll(" [hv]?/{1,2}", " LACUNA");
-            line = line.replaceAll("[!<>]", " ");
-            line = line.replaceAll(" +", " ");
-            String[] lineArray = line.split(" ");
-            for (String mdc : lineArray) {
-                tempMdc = "";
-                //change transliterations to Gardiner sign list codes
-                //certain transliteration transliterations in the list have rotation, get those first
-                if (mdc.matches("[^ ]*\\\\R[0-9]+")) {
-                    if (mdcTranslits.containsKey(mdc)) {
-                        tempMdc = mdcTranslits.get(mdc);
-                    }
-                }
-                //remove rotation and size designations and change then transliteration
-                mdc = mdc.replaceAll("\\\\R?[0-9]+", "");
+    private static void processMdc(String line) {
+        String tempLine = "", tempMdc;
+        line = cleanLine(line, true);
+        line = line.replaceAll("\\\\ ", " ");
+        line = line.replaceAll("(\\{\\{[^\\}]*\\}\\})|(<[^ ]*)|([^ ]*>)|(\\|[0-9]+)", "");
+        line = line.replaceAll("\\.\\.", "\t");
+        line = line.replaceAll("[:*&^\\[\\]_'!<>\\.]", " ");
+        line = line.replaceAll("([\\(\\)])|(\\$[rb])", "");
+        line = line.replaceAll("#[^ ]*", " ");
+        line = line.replaceAll("(^[hv]?/{1,2})|( [hv]?/{1,2})", " LACUNA");
+        line = line.trim().replaceAll(" +", " ");
+        String[] lineArray = line.split(" ");
+        for (String mdc : lineArray) {
+            tempMdc = "";
+            //change transliterations to Gardiner sign list codes
+            //certain transliteration transliterations in the list have rotation, get those first
+            if (mdc.matches("[^ ]*\\\\R[0-9]+")) {
                 if (mdcTranslits.containsKey(mdc)) {
-                    mdc = mdcTranslits.get(mdc);
+                    tempMdc = mdcTranslits.get(mdc);
                 }
-                if (!tempMdc.equals("")) {
-                    mdc = tempMdc;
-                }
-                tempLine += mdc+" ";
             }
-            line = tempLine;
-            
-            //put line number back to the beginning
-            if (!lineNr.equals("")) {
-                line = lineNr+" - "+line;
+            //remove rotation and size designations and change then transliteration
+            mdc = mdc.replaceAll("\\\\R?[0-9l]+", "");
+            if (mdcTranslits.containsKey(mdc)) {
+                mdc = mdcTranslits.get(mdc);
             }
-            line = line.replaceAll("[*^&:]", " ");
-            line = line.replaceAll(" +", " ");
+            if (!tempMdc.equals("")) {
+                mdc = tempMdc;
+            }
+            tempLine += mdc+" ";
         }
-        else {
-            line = line.replaceFirst("\\+ ?", "");
-        }
+        line = tempLine;
+
+        line = line.replaceAll("[*^&:]", " ");
+        line = line.replaceAll(" +", " ");
+
         cleanedMdc += line+"\n";
     }
     
-    private static String cleanLine(String line) {
+    private static String cleanLine(String line, boolean infosEnded) {
         //if comment
         if (line.startsWith("+")) {
             line = line.replaceAll("\\+s", " ");
-            line = line.replaceAll("\\+[libtchgr]", " ");
-            line = line.replaceAll("\\+\\+", " ");
+            line = line.replaceAll("\\+[libtchgrd]", " ");
             line = line.replaceAll(" +", " ");
+            //put the line to model for the json
+            //but only if in the beginning of the document
             if (model.getTextName().equals("")) {
                 model.setTextName(line);
             }
+            else if (!model.getTextName().equals("") && !infosEnded) {
+                model.setInfo(line);
+            }
             return line.trim();
         }
-        line = line.replaceAll("\\+(\\+)|([libtchgr])[^\\+]+\\+s", "");
-        line = line.replaceAll("\\+s", " ");
-        line = line.replaceAll("\\+", " ");
+        //else
+        line = line.replaceAll("(\\+[libtchgrd|][^\\+]*\\+s)", "");
+        line = line.replaceAll("(\\+s)|(\\+\\+?)", " ");
         line = line.replaceAll(" +", " ");
         return line;
     }
     
     //convert the line to Unicode characters
-    private static void processUnicode(String line) {
-        //handle comment lines first
-        if (line.startsWith("+")) {
-            line = line.replaceFirst("\\+ ?", "");
-            unicodes += cleanLine(line)+"\n"; 
+    private static void processUnicode(String line, String lineNr, int count) {
+        //change ** which indicates absolute positioning to *
+        //it is almost impossible to know what the placing is
+        line = line.replaceAll("_?\\*\\*", "*");
+        line = line.replaceAll(" & ([^\\]])", "&$1");
+        line = line.replaceAll("_?&+", "&");
+        line = line.replaceAll("\\^+", "^");
+        String[] lineArray = line.trim().split(" ");
+        String shade = "";
+        String mdc;
+        Stack signStack = new Stack();
+        String mdcLine = "";
+        String thisChar;
+        String uniLine = "";
+        String jsonLine = "";
+
+        //add the encoded sign groups to a stack
+        for (int j=0; j<lineArray.length; j++) {
+            mdc = lineArray[j];
+            if (!mdc.contains("[") && !mdc.contains("]")) {
+                while (mdc.contains("(") && !mdc.contains(")")) {
+                    mdc  += "*"+lineArray[++j];
+                }
+            }
+            signStack.add(mdc);
+        }
+        annotations = new TreeMap<>();
+
+        //start from the last sign group
+        while (!signStack.empty()) {
+            String shaded;
+            mdc = signStack.pop().toString();
+            //separate different additions to signs/sign groups and add back to stack
+            if (mdc.contains("[") && mdc.contains("]")) {
+                //separate the brackets from the word
+                mdc = mdc.replaceAll("\\[", " [");
+                mdc = mdc.replaceAll("\\] \\{", "]{");
+                mdc = mdc.replaceAll("\\[ ([\\[&\\{\"'\\(\\?])", "[$1").trim();
+                mdc = mdc.replaceAll("([\\]&\\}\"'\\)\\?]) \\]", "$1]").trim();
+
+                //handle shades, annotations and insertions that consern the bracketed region
+                String endShade = "";
+                if (mdc.matches("[^#]+#[1-4]{1,4}$")) {
+                    endShade = getMatch(mdc, "(#[1-4]{1,4}$)");
+                    mdc = getMatch(mdc, "([^#]+)#[1-4]{1,4}$");
+                }
+                if (mdc.contains("{") || mdc.contains("\\")) {
+                    mdc = getAnnotations(mdc);
+                }
+                if (mdc.contains("&") || mdc.contains("^")) {
+                   mdc = getInsertions(mdc);
+                }
+                //separate the signs and add shade to all if necessary
+                mdc = addSpaces(mdc, false);
+                if (!endShade.equals("")) {
+                    mdc = addShades(mdc, endShade).replaceAll(" +", " ");
+                }
+                //put signs back to stack
+                signStack.addAll(Arrays.asList(mdc.split(" ")));
+            }
+            //get annotations such as absolute placement, rotation and size
+            else if (mdc.contains("{") || mdc.contains("\\")) {
+                String toAdd = getAnnotations(mdc);
+                signStack.add(toAdd);
+            }
+            //end of shading, all signs till the #b get full shading added
+            else if (mdc.equals("#e")) {
+               shaded = "";
+               mdc = signStack.pop().toString();
+               while (!mdc.equals("#b")) {
+                    mdc = addSpaces(mdc, false);
+                    shaded = addShades(mdc, "#1234")+" "+shaded;
+                    mdc = signStack.pop().toString();
+               }
+                signStack.addAll(Arrays.asList(shaded.split(" ")));
+            }
+            //in red zones each sign is marked
+            else if (mdc.equals("$b")) {
+               String red = "";
+               mdc = signStack.pop().toString();
+               while (!mdc.equals("$r")) {
+                    red = mdc+"% "+red;
+                    mdc = signStack.pop().toString();
+               }
+                signStack.addAll(Arrays.asList(red.split(" ")));
+            }
+            //when sign or sign group is followed by shading information #1234, 
+            //put the shading for each sign according to its position in the group
+            else if (mdc.contains("#") && !mdc.startsWith("#")) {
+                if (mdc.matches("[^#]+##[^1-4].*")) {
+                    mdc = mdc.replaceFirst("##", " ## ");
+                    signStack.add(mdc.split(" ")[0]);
+                    signStack.add(mdc.split(" ")[1]);
+                    signStack.add(mdc.split(" ")[2]);
+                    continue;
+                }
+                shade = "#"+mdc.split("#")[1];
+                mdc = mdc.split("#")[0];
+                mdc = addSpaces(mdc, false);
+                //the actual assignment of shading to each sign is done in addShades
+                shaded = addShades(mdc, shade);
+                signStack.addAll(Arrays.asList(shaded.split(" ")));
+
+            }
+            //handle insertion e.g. ligatures and signs placed inside/under etc. of each other
+            else if ((mdc.contains("&") || mdc.contains("^")) && (!mdc.matches("\\[[&\\{\\[\"'\\?]") && !mdc.matches("[&\\}\\]\"'\\?]\\]"))) {
+                mdc = getInsertions(mdc);
+                signStack.addAll(Arrays.asList(mdc.split(" ")));
+            }
+            //clean signs and sign groups are ready to be added to the final line
+            else {
+                mdc = addSpaces(mdc, false);
+                //reattach annotations to signs if any
+                if (!annotations.isEmpty()) {
+                    String[] array = mdc.split(" ");
+                    String toAdd = "";
+                    ArrayList<String> toRemove = new ArrayList<>();
+                    for (String arr : array) {
+                        if (annotations.containsKey(arr)) {
+                            toAdd += arr+" "+annotations.get(arr)+" ";
+                            toRemove.add(arr);
+                        }
+                        else {
+                            toAdd += arr+" ";
+                        }
+                    }
+                    for (String rem : toRemove) {
+                        annotations.remove(rem);
+                    }
+                    mdc = toAdd;
+                }
+                //line in mdc encoding
+                
+                //get the unicodes for the sign(s)
+                String value = getUnicodes(mdc);
+                //System.out.println(value);
+                String[] returnValue = value.split(";");
+                thisChar = returnValue[0];
+                if (!value.endsWith(";")) {
+                    mdc = returnValue[1];
+                }
+                mdcLine = mdc+" "+mdcLine;
+                //line with Unicode characters with spaces, for the JSON file
+                jsonLine = thisChar+" "+jsonLine;
+            }
+        }
+        jsonLine = jsonLine.replaceAll(" +", " ").trim();
+        uniLine = jsonLine.replaceAll(" ", "");
+        //add the tokens of the line to the JSON model
+        if (jsonLine.isEmpty()) {
+            Line lineToAdd = new Line(count, lineNr);
+            Item item = new Item(String.valueOf(count), 1, "", "", "", "", "", "", "-");
+            lineToAdd.setItem(item);
+            model.setLine(lineToAdd);
         }
         else {
-            lineCount++;
-
-            //change ** which indicates absolute positioning to *
-            //it is impossible to know what the placing is
-            line = line.replaceAll("_?\\*\\*", "*");
-            line = line.replaceAll(" & ([^\\]])", "&$1");
-            line = line.replaceAll("_?&+", "&");
-            line = line.replaceAll("\\^+", "^");
-
-            String[] lineArray = line.trim().split(" ");
-            String shade = "";
-            String mdc;
-            Stack signStack = new Stack();
-            String mdcLine = "";
-            String thisChar;
-            String uniLine = "";
-            String jsonLine = "";
-            
-            //add the encoded signs to a stack
-            for (int j=0; j<lineArray.length; j++) {
-                mdc = lineArray[j];
-                if (!mdc.contains("[") && !mdc.contains("]")) {
-                    while (mdc.contains("(") && !mdc.contains(")")) {
-                        mdc = mdc+"*"+lineArray[++j];
-                    }
-                }
-                signStack.add(mdc);
+            addToModel(jsonLine, mdcLine, count, lineNr);
+            String uniLineNr = "";
+            if (!lineNr.isEmpty()) {
+                uniLineNr = lineNr+" ";
             }
-            annotations = new TreeMap<>();
-            
-            //start from the last sign
-            while (!signStack.empty()) {
-                String shaded;
-                mdc = signStack.pop().toString();
-                //separate different addition to signs/sign groups and add back to stack
-                if (mdc.contains("[") && mdc.contains("]")) {
-                    //separate the brackets from the word
-                    mdc = mdc.replaceAll("\\[", " [");
-                    mdc = mdc.replaceAll("\\]", "] ");
-                    mdc = mdc.replaceAll("\\] \\{", "]{");
-                    mdc = mdc.replaceAll("\\[ ([\\[&\\{\"'\\(\\?])", "[$1").trim();
-                    mdc = mdc.replaceAll("([\\]&\\}\"'\\)\\?]) \\]", "$1]").trim();
-                    
-                    //handle shades that consern the bracketed region
-                    String endShade = "";
-                    if (mdc.matches("[^#]+#[1-4]{1,4}$")) {
-                        endShade = getMatch(mdc, "(#[1-4]{1,4}$)");
-                        mdc = getMatch(mdc, "([^#]+)#[1-4]{1,4}$");
-                    }
-                    if (mdc.contains("{") || mdc.contains("\\")) {
-                        mdc = getAnnotations(mdc);
-                    }
-                    if (mdc.contains("&") || mdc.contains("^")) {
-                       mdc = getInsertions(mdc);
-                    }
-                    mdc = addSpaces(mdc, false);
-                    if (!endShade.equals("")) {
-                        mdc = addShades(mdc, endShade).replaceAll(" +", " ");
-                    }
-
-                    signStack.addAll(Arrays.asList(mdc.split(" ")));
-                }
-
-                else if (mdc.contains("{") || mdc.contains("\\")) {
-                    String toAdd = getAnnotations(mdc);
-                    signStack.add(toAdd);
-                }
-                //end of shading, all signs till the #b get full shading added
-                else if (mdc.equals("#e")) {
-                   shaded = "";
-                   mdc = signStack.pop().toString();
-                   while (!mdc.equals("#b")) {
-                        mdc = addSpaces(mdc, false);
-                        shaded = addShades(mdc, "#1234")+" "+shaded;
-                        mdc = signStack.pop().toString();
-                   }
-                    signStack.addAll(Arrays.asList(shaded.split(" ")));
-                }
-                //when sign or sign group is followed by shading information, put the shading for each sign according to its position in the group
-                else if (mdc.contains("#") && !mdc.startsWith("#")) {
-                    if (mdc.matches("[^#]+##[^1-4].*")) {
-                        mdc = mdc.replaceFirst("##", " ## ");
-                        signStack.add(mdc.split(" ")[0]);
-                        signStack.add(mdc.split(" ")[1]);
-                        signStack.add(mdc.split(" ")[2]);
-                        continue;
-                    }
-                    shade = "#"+mdc.split("#")[1];
-                    mdc = mdc.split("#")[0];
-                    shaded = "";
-                    mdc = addSpaces(mdc, false);
-                    //the actual assignment of shading to each sign is done in addShades
-                    shaded = addShades(mdc, shade);//+" "+shaded;
-                    signStack.addAll(Arrays.asList(shaded.split(" ")));
-
-                }
-                //handle insertion e.g. ligatures and sign placed inside/under etc. of each other
-                else if ((mdc.contains("&") || mdc.contains("^")) && (!mdc.matches("\\[[&\\{\\[\"'\\?]") && !mdc.matches("[&\\}\\]\"'\\?]\\]"))) {
-                    mdc = getInsertions(mdc);
-                    signStack.addAll(Arrays.asList(mdc.split(" ")));
-                }
-                //clean signs and sign groups are ready for adding to the finale line
-                else {
-                    
-                    mdc = addSpaces(mdc, false);
-                    if (!annotations.isEmpty()) {
-                        String[] array = mdc.split(" ");
-                        String toAdd = "";
-                        ArrayList<String> toRemove = new ArrayList<>();
-                        boolean added = false;
-                        for (String arr : array) {
-                            for (Map.Entry<String, String> entry : annotations.entrySet()) {
-                                if (arr.startsWith(entry.getKey())) {
-                                    toAdd += arr+" "+entry.getValue()+" ";
-                                    toRemove.add(entry.getKey());
-                                    added = true;
-                                }
-                            }
-                            if (!added) {
-                                toAdd += arr+" ";
-                            }
-                            for (String rem : toRemove) {
-                                annotations.remove(rem);
-                            }
-                        }
-                        mdc = toAdd;
-                    }
-                    //line in mdc encoding
-                    mdcLine = mdc+" "+mdcLine;
-                    //get the unicodes for the sign(s)
-                    thisChar = getUnicodes(mdc);
-                    //line with Unicode characters without spaces
-                    uniLine = thisChar+""+uniLine;
-                    //line with Unicode characters with spaces, for the JSON file
-                    jsonLine = thisChar+" "+jsonLine;
-                }
-            }
-            uniLine = uniLine.replaceAll(" *", "");
-            jsonLine = jsonLine.replaceAll(" +", " ").trim();
-            //add the tokens of the line to the JSON model
-            addToModel(jsonLine, mdcLine, lineCount);
-
-            unicodes += uniLine+"\n";
+            unicodes += uniLineNr+uniLine+"\n";
         }
     }
-    
-    //if sign has modifiers (size, placing, rotation), re-add them after the sign after Unicodes and pure mdc have been handled
+        
+    //if sign has modifiers (size, placing, rotation), store them in an array
+    //they are re-added to the sign after Unicodes and pure mdc have been handled
     private static String getAnnotations(String mdc) {
-        String divided = mdc.replaceAll("([:\\*&^])", " $1 ");
+        String divided = mdc.replaceAll("([:\\*&^\\(\\)])", " $1 ");
         String[] array = divided.split(" ");
         String toAdd = "";
         for (String arr : array) {
@@ -661,144 +710,232 @@ public class Gly2mdc2 {
             else if (arr.contains("\\")) {
                 arr = arr.replace("\\", " €");
                 String[] arrArray = arr.split(" ");
-                annotations.put(arrArray[0], arrArray[1]);
+                annotations.put(arrArray[0], arr.replaceAll("^[^ ]* ", "").replaceAll(" ", ""));
                 toAdd += arrArray[0];
+                //System.out.println(toAdd);
             }
             else {
                 toAdd += arr;
             }
         }
+        
         return toAdd;
     }
     
-    //add information for each sign in the line to the JSON model
-    private static void addToModel(String thisChars, String mdcLine, int count) {
+    //add information for each sign of the line to the JSON model
+    private static void addToModel(String uniLine, String mdcLine, int count, String lineNr) {
+        //System.out.println(mdcLine);
+        //System.out.println(uniLine);
+        Line line;
         Item item;
-        String lineNr = "";
+        boolean red = false;
         mdcLine = mdcLine.replaceAll(" +", " ");
-        if (mdcLine.contains("-")) {
-            lineNr = mdcLine.split(" - ")[0];
-            latestLine = lineNr;
+        if (lineNr.isEmpty()) {
+            lineNr = "-";
         }
+
+        line = new Line(count, lineNr);
         mdcLine = mdcLine.replaceFirst("^[^-]*- ", "");
-        if (lineNr.equals("")) {
-            if (latestLine.equals("")) {
-                lineNr = Integer.toString(count);
-            }
-            else {
-                lineNr = latestLine;
-            }
-        }
-        thisChars = thisChars.replaceFirst("^[^\\-]*-", "");  
+        uniLine = uniLine.replaceFirst("^[^\\-]*-", "");  
 
         //ignore comment lines
         if (!mdcLine.startsWith("+")) {
-            String uniLine = thisChars.replaceAll(" +", " ");
+            uniLine = uniLine.replaceAll(" +", " ");
             mdcLine = mdcLine.replaceAll("\\++[^\\+]\\+s", "");
             String[] mdcArray = mdcLine.split(" ");
             String[] uniArray = uniLine.split(" ");
-            int j = 0;
-            String mdc, uni, encoding ="", codepoint ="", tsl="";
-            Sign sign, sign2;
+            int j = 0, itemNr = 0;
+            String mdc, uni, encoding, codepoint ="", tsl="";
+            Sign sign;
             for (int i=0; i<mdcArray.length; i++) { 
                 encoding = mdcArray[i];
                 //placing, rotation and size
-                if (encoding.startsWith("{{") || encoding.startsWith("€")) {
-                    item = model.getLast();
-                    //absolute placing
-                    if (encoding.startsWith("{{")) {
-                        item.setPlacing(encoding);
+                if (encoding.startsWith("{{") || encoding.startsWith("€") || encoding.startsWith("\\")) {
+                    item = line.getLast(1);
+                    
+                    if (encoding.startsWith("\\")) {
+                        int howMany = 1;
+                        while (item.isControlCharacter()) {
+                            item = line.getLast(++howMany);
+                        }
+                        if (encoding.equals("\\")) {
+                            item.setReversed();
+                        }
+                        else if (encoding.contains("R")) {
+                            item.setRotation(encoding.replaceFirst("\\\\R", ""));
+                        }
+                        line.deleteLast();
+                        line.setItem(item);
+                        //continue;
                     }
-                    //rotation and size
                     else {
-                        encoding = encoding.replace("€", "");
-                        if (encoding.contains("R")) {
-                            if (mdcTranslits.containsKey(item.getMdc()+""+encoding)) {
-                                item.setMdc(mdcTranslits.get(item.getMdc()+""+encoding));
-                                item.setRotation(encoding);
-                                item.setUnicode(signs.get(item.getMdc()).getUni());
+                        //absolute placing
+                        if (encoding.startsWith("{{")) {
+                            item.setPlacing(encoding);
+                        }
+                        //rotation and size
+                        else {
+
+                            encoding = encoding.replace("€", " ");
+                            String[] encArray = encoding.split(" ");
+                            for (String code : encArray) {
+                                if (code.contains("R")) {
+                                    if (mdcTranslits.containsKey(item.getMdc()+""+code)) {
+                                        item.setMdc(mdcTranslits.get(item.getMdc()+""+code));
+                                        item.setRotation(code);
+                                        item.setUnicode(signs.get(item.getMdc()).getUni());
+                                    }
+                                    else {
+                                        item.setRotation(code);
+                                    }
+                                    //j++;
+                                }
+                                else if (code.equals("l")) {
+                                    item.setLarger();
+                                }
+                                else {
+                                    item.setSize(code);
+                                }
                             }
-                            else {
-                                item.setRotation(encoding);
-                            }
-                            j++;
+
+                        }
+                        line.deleteLast();
+                        line.setItem(item);
+                        continue;
+                    }
+                }
+                
+                //sometimes the line division is not the same as in the original document
+                //keep track of original line changes marked with |Nr
+                if (encoding.matches("\\|[0-9]+")) {
+                    if (line.getLineName().equals("-")) {
+                        line.setLineName(encoding);
+                    }
+                    latestLine = encoding;
+                    j++;
+                }
+                else {
+                    itemNr++;
+                    //signs in red zone have been marked with %
+                    if (encoding.contains("%")) {
+                        encoding = encoding.replaceAll("%", "");
+                        red = true;
+                    }
+                    /*if (encoding.startsWith("\\")) {
+                        Sign thisSign;
+                        if (encoding.equals("\\")) {
+                            thisSign = signs.get("<->");
+                            item = new Item(String.valueOf(count), itemNr++, latestLine, "\\", "\\", thisSign.getUni(), "", thisSign.getCodepoint(), "");
+                            item.setControlCharacter("Yes");
+                            item.setReversed();
+                            line.setItem(item);
+                            //uni = uniArray[j++];
+                            
+                        }
+                    }*/
+                    if (mdcTranslits.containsKey(encoding)) {
+                        mdc = mdcTranslits.get(encoding);
+                    }
+                    else if (!signs.containsKey(encoding)) {
+                        //if encoding not found in the list, check without letter(s) at the end
+                        if (encoding.matches("[a-zA-Z]+[0-9]+[A-Za-z]")) {
+                            String shortMdc = encoding.replaceAll("([0-9])[A-Za-z]$", "$1");
+                            mdc = shortMdc;
                         }
                         else {
-                            item.setSize(encoding);
+                            mdc = encoding;
                         }
-                        
-                    }
-                    model.deleteLast();
-                    model.setItem(item);
-                    continue;
-                }
-                mdc = "";
-                if (mdcTranslits.containsKey(encoding)) {
-                    mdc = mdcTranslits.get(encoding);
-                }
-                else if (!signs.containsKey(encoding)) {
-                    if (encoding.matches("[a-zA-Z]+[0-9]+[A-Za-z]")) {
-                        String shortMdc = encoding.replaceAll("([0-9])[A-Za-z]$", "$1");
-                        mdc = shortMdc;
                     }
                     else {
                         mdc = encoding;
                     }
-                }
-                else {
-                    mdc = encoding;
-                }
-                
-                uni = uniArray[j];
-
-                if (signs.containsKey(mdc)) {
-                    sign = signs.get(mdc);
-                    codepoint = sign.getCodepoint();
-                    tsl = sign.getTsl();
-                }
-                else {
-                    String uni2 = "";
-                    int count2 = 0;
-                    for (int k=j; k<i+mdc.length(); k++) {
-                        if (k<uniArray.length) {
-                            uni2 += uniArray[k];
-                            count2++;
+                    if (lineNr.equals("-")) {
+                        lineNr = String.valueOf(count);
+                    }
+                    uni = uniArray[j];
+                    if (uni.matches("[a-zA-Z]+")) {
+                        uni = "-";
+                    }
+                    codepoint = "-";
+                    tsl = "";
+                    /*Sign thisSign;
+                    for (int y=90; y<=270; y+=90) {
+                        thisSign = signs.get("\\R"+y);
+                        if (uni.equals(thisSign.getUni())) {
+                            item = new Item(String.valueOf(count), itemNr++, latestLine, thisSign.getMdc(), thisSign.getMdc(), uni, "", thisSign.getCodepoint(), "");
+                            item.setControlCharacter("Yes");
+                            item.setRotation(thisSign.getMdc());
+                            line.setItem(item);
+                            uni = uniArray[j++];
+                            System.out.println(thisSign.getMdc()+"\t"+String.valueOf(count)+"\t"+itemNr);
+                        }
+                        
+                    }
+                    thisSign = signs.get("<->");
+                    if (uni.equals(thisSign.getUni())) {
+                        item = new Item(String.valueOf(count), itemNr++, latestLine, "\\", "\\", uni, "", thisSign.getCodepoint(), "");
+                        item.setControlCharacter("Yes");
+                        item.setReversed();
+                        line.setItem(item);
+                        uni = uniArray[j++];
+                        System.out.println("\\");
+                    }*/
+                    //System.out.println(mdc+"\t"+uni);
+                    if (signs.containsKey(mdc)) {
+                        sign = signs.get(mdc);
+                        codepoint = sign.getCodepoint();
+                        tsl = sign.getTsl();
+                        if (encoding.matches("\\\\")) {
+                            encoding = sign.getMdc();
+                            mdc = sign.getMdc();
                         }
                     }
-                    if (uni2.equals(mdc)) {
-                        uni = uni2;
-                        j += count2-1;
+                    else {
+                        String uni2 = "";
+                        int count2 = 0;
+                        for (int k=j; k<i+mdc.length(); k++) {
+                            if (k<uniArray.length) {
+                                uni2 += uniArray[k];
+                                count2++;
+                            }
+                        }
+                        if (uni2.equals(mdc)) {
+                            uni = uni2;
+                            j += count2-1;
+                        }
                     }
+                    
+                    item = new Item(String.valueOf(count), itemNr, latestLine, encoding, mdc, uni, tsl, codepoint, "");
+                    if (codepoint.startsWith("1343") || codepoint.startsWith("1344") || codepoint.startsWith("1345")) {
+                        item.setControlCharacter();
+                    }
+                    if (i<mdcArray.length-1 && mdcArray[i+1].startsWith("#")) {
+                        item.setShading("YES");
+                    }
+                    if (red || encoding.equals("o")) {
+                        item.setColor("red");
+                    }
+                    line.setItem(item);
+                    j++;
                 }
-                
-                item = new Item(lineNr, i+1, encoding, mdc, uni, tsl, codepoint);
-                if (codepoint.startsWith("1343") || codepoint.startsWith("1344") || codepoint.startsWith("1345")) {
-                    item.setControlCharacter("Yes");
-                }
-                if (i<mdcArray.length-1 && mdcArray[i+1].startsWith("#")) {
-                    item.setShading("YES");
-                }
-                model.setItem(item);
-                j++;
             }
+            model.setLine(line);
         }
     }
     
-    //separate the encodings of the sign groups
-    private static String addSpaces(String line, boolean original) {
-        line = line.replaceAll(":", " : ");
-        line = line.replaceAll("&", " & ");
-        line = line.replaceAll("\\^", " ^ ");
-        line = line.replaceAll("\\*", " * ");
-        line = line.replaceAll("\\(", " ( ");
-        line = line.replaceAll("\\)", " ) ");
+    //separate the encodings of a sign group
+    private static String addSpaces(String mdc, boolean original) {
+        if (!mdc.startsWith("|(")) {
+            mdc = mdc.replaceAll("([:\\*&\\^\\)\\(])", " $1 ");
+        }
         if (original) {
-            line = line.replaceAll("\\\\", " €");
+            mdc = mdc.replaceAll("\\\\", " €");
         }
-        return line.trim();
+        mdc = mdc.replaceAll(" +", " ");
+        return mdc.trim();
     }
     
-    //handle the shading of signs which in Unicode is added after each sign separately
+    //handle the shading which in Unicode is added after each sign separately
     //mdc = sign group, shade the shading for the entire group
     private static String addShades(String mdc, String shade) {
         String[] mdcArray;
@@ -811,6 +948,7 @@ public class Gly2mdc2 {
             //ignore control characters and shading
             if (!thisMdc.matches("[:\\*&\\)\\(]") && !thisMdc.startsWith("#")) {
                 int thisIndex = mdc.indexOf(thisMdc);
+                //only works on groups with one colon and/or asterisk
                 int colon = mdc.indexOf(":");
                 int asterisk = mdc.indexOf("*");
                 int place = -1;
@@ -835,7 +973,7 @@ public class Gly2mdc2 {
                     }
                 }
                 else if (colon > -1) {
-                    if (thisIndex > mdc.indexOf(")") && mdc.indexOf(")") > -1) {
+                    if (thisIndex > mdc.indexOf(")") && mdc.contains(")")) {
                         thisShaded += thisMdc+" "+shade+" ";
                     }
                     else if (thisIndex < asterisk) {
@@ -979,10 +1117,284 @@ public class Gly2mdc2 {
     
     //add Unicode control character designations of insertions (= over, above, under etc.) to sign groups
     private static String getInsertions(String mdc) {
-        mdc = mdc.replaceAll("[\\(\\)]", "");
-        String[] mdcArray = mdc.split("&");
         String toReturn = "";
+
         //ligatures in JSesh
+        toReturn = getJseshLigature(mdc);
+        if (!toReturn.equals("")) {
+            return toReturn;
+        }
+
+        String devided = addSpaces(mdc, false);
+        
+        devided = devided.replaceAll("(\\[+)", " $1 ").trim();
+        devided = devided.replaceAll("(\\]+)", " $1 ").trim();
+        devided = devided.replaceAll(" +", " ");
+        String[] mdcArray =  devided.split(" ");
+        
+        String thisMdc, pos ="", toAdd, mdc1 = "", mdc2, mdcForSign1, mdcForSign2;
+        Sign sign1, sign2;
+        String[] insert = new String[mdcArray.length];
+        for (int i=0; i<mdcArray.length; i++) {
+            mdc1 = mdcArray[i];
+            
+            mdc1 = isTranslit(mdc1);
+            sign1 = signs.get(mdc1);
+            insert[i] = "";
+            if (mdc1.matches("[&\\^]")) {
+                insert[i] = mdc1;
+            }
+            else if (sign1 != null && sign1.getInsert()) {
+                insert[i] = "I";
+            }
+            else {
+                insert[i] = "N";
+            }
+        }
+        toAdd = "";
+        mdc2 = "";
+        
+        int withInsert = 0;
+        for (int i=1; i<mdcArray.length; i+=2) {
+            String toDo1 = insert[i-1];
+            String toDo2 = insert[i+1];
+            toAdd = toAdd.replaceAll(" +", " ");
+            mdcForSign1 = "";
+            mdcForSign2 = "";
+            if (withInsert !=2) {
+                mdc1 = mdcArray[i-1];
+            }
+            else {
+                
+            }
+            mdcForSign1 = isTranslit(mdc1);
+            if (mdcForSign1.isEmpty()) {
+                mdcForSign1 = mdc1;
+            }
+            if (mdc1.equals("(")) {
+                mdc1 = getGroupInsertion(mdc1, mdcArray, i-2);
+                i+=mdc1.replaceAll(" +", " ").split(" ").length-1;
+                toDo2 = insert[i+1];
+            }
+            withInsert = 0;
+            mdc2 = "";
+            //get previous sign
+            
+            sign1 = signs.get(mdcForSign1);
+            //get the following sign
+            if (i<mdcArray.length-1) {
+                mdc2 = mdcArray[i+1];
+                if (mdc2.equals("(")) {
+                    mdc2 = getGroupInsertion(mdc2, mdcArray, i);
+                }
+                mdcForSign2 = isTranslit(mdc2);
+                if (mdcForSign2.isEmpty()) {
+                    mdcForSign2 = mdc2;
+                }
+            }       
+            sign2 = signs.get(mdcForSign2);
+            //get the sign to consider
+            thisMdc = mdcArray[i];
+
+            //the easy ones above and next
+            if (thisMdc.equals(":") || thisMdc.equals("*")) {
+                if (toAdd.length() == 0) {
+                    toAdd += mdc1+" "+thisMdc+" "+mdc2+" ";
+                }
+                else {
+                    toAdd += " "+thisMdc+" "+mdc2+" ";
+                }
+            }
+
+            //insertion before and after
+            //find the position using the possible places for this sign, then mark the insertion in the group
+            else if (thisMdc.equals("&") || thisMdc.equals("^")) {
+                if (thisMdc.equals("^")) {
+                    if (sign2 != null) {
+                        pos = sign2.getBegin();
+                        
+                        if (pos.equals("")) {
+                            pos = sign2.getTop();
+                        }
+                        else {
+                            withInsert = 2;
+                        }
+                        if (pos.equals("")) {
+                            pos = sign2.getBottom();
+                        }
+                        else {
+                            withInsert = 2;
+                        }
+                    }       
+                    if (pos.equals("") && sign1 != null) {        
+                        pos = sign1.getEnd();
+                        if (pos.equals("")) {
+                            pos = sign1.getBottom();
+                        }
+                        if (pos.equals("")) {
+                            pos = sign1.getTop();
+                        }
+
+                        if (pos.equals("")) {
+                            pos = "*";
+                        }
+                    }
+                    if (withInsert == 2) {
+                        String temp = mdc1;
+                        mdc1 = mdc2;
+                        mdc2 = temp;
+                        if (!toAdd.equals("") && toAdd.split(" ").length == i) {
+                            String[] toAddArray = toAdd.split(" ");
+                            toAdd = "";
+                            for (int k=0; k<toAddArray.length-1; k++) {
+                                toAdd += toAddArray[k]+" ";
+                            }
+                        }
+                    }
+                    if (!toAdd.equals("") && toAdd.split(" ").length == i && withInsert != 2) {
+                            toAdd += " "+pos+" "+mdc2+" ";
+                    }
+                    else {
+                        toAdd += mdc1+" "+pos+" "+mdc2+" ";
+                        
+                    }
+                }
+                else if (thisMdc.equals("&")) {
+                    
+                    if (toDo1.equals("I")) {
+                        pos = sign1.getEnd();
+                        if (pos.equals("")) {
+                            pos = sign1.getMiddle();
+                        }
+                        if (pos.equals("")) {
+                            pos = sign1.getTop();
+                        }
+                        if (pos.equals("")) {
+                            pos = sign1.getBottom();
+                        }
+                        if (pos.equals("")) {
+                            pos = sign1.getBegin();
+                        }
+                        if (pos.equals("") && !annotations.isEmpty()) {
+                            toAdd += mdc1+"##"+mdc2;
+                            i++;
+                            continue;
+                        }
+                        if (pos.equals("") && sign2 != null) {
+                            pos = sign2.getBegin();
+                            if (!pos.equals("")) {
+                                withInsert = 2;
+                                String[] toAddArray = toAdd.split(" ");
+                                if (toAdd.length()>0 && toAddArray.length == i) {
+                                    if (insert[i-2].equals("^")) {
+                                        toAdd += pos+" "+mdc2;
+                                    }
+                                }
+                                else {
+                                    toAdd += mdc2+" "+pos+" "+mdc1+" ";
+                                }
+                               // i++;
+                                continue;
+                            }
+                            
+                        }
+                        if (pos.equals("")) {
+                            pos = sign1.getBegin();
+                        }
+                        if (withInsert == 2) {
+                            String temp = mdc1;
+                            mdc1 = mdc2;
+                            mdc2 = temp;
+                            
+
+                        }
+                        if (!toAdd.equals("") && toAdd.split(" ").length == i) {
+                            toAdd += pos+" "+mdc2+" ";
+                        }
+                        else {
+                            toAdd += mdc1+" "+pos+" "+mdc2+" ";
+                        }
+                    }
+                    else if (toDo2.equals("I")) {
+                        pos = sign2.getBegin();
+                        
+                        if (pos.equals("")) {
+                            pos = sign2.getMiddle();
+                        }
+                        if (pos.equals("")) {
+                            pos = sign2.getTop();
+                        }
+                        if (pos.equals("")) {
+                            pos = sign2.getBottom();
+                        }
+                        if (!pos.equals("")) {
+                            withInsert = 2;
+                        }
+                        if (!toAdd.equals("") && toAdd.split(" ").length == i) {
+                            toAdd += pos+" "+mdc2+" ";
+                        }
+                        else {
+                            
+                            toAdd += mdc2+" "+pos+" "+mdc1+" ";
+                            withInsert = 2;
+                            String temp = mdc1;
+                            mdc1 = mdc2;
+                            mdc2 = temp;
+                            
+                        }
+                    }
+                    else {
+                        if (toAdd.length() == 0) {
+                            toAdd += mdc1+" * "+mdc2+" ";
+                            
+                        }
+                        else {
+                            toAdd += " * "+mdc2+" ";
+                        }
+                    }
+                    
+                }
+                
+            }
+            if (mdc2.endsWith(")")) {
+                i+=mdc2.replaceAll(" +", " ").split(" ").length-1;
+            }
+        }
+        return toAdd.replaceAll(" +", " ").trim();
+    }
+    
+    private static String getGroupInsertion(String mdc1, String[] mdcArray, int i) {
+        if (mdc1.equals("(")) {
+            int count = 1;
+            i++;
+            while (count != 0) {
+                String join = mdcArray[++i];
+                mdc1 += join;
+                if (join.equals("(")) {
+                    count++;
+                }
+                else if (join.equals(")")) {
+                    count--;
+                }
+                if (count == 0) {
+                    if (mdc1.matches(".*[\\&\\^].*")) {
+                        mdc1 = mdc1.replaceAll("\\)$", "");
+                        mdc1 = "( "+getInsertions(mdc1.replaceAll("^\\(", ""))+" )";
+                    }
+                    else {
+                        mdc1 = mdc1.replaceAll("([\\*&\\(\\):])", " $1 ").trim();
+                    }
+                }
+
+            }
+
+        }
+        return mdc1;
+    }
+    
+    private static String getJseshLigature(String mdc) {
+        String[] mdcArray = mdc.split("&");
+        String toReturn ="";
         if (mdc.equals("H&a") || mdc.equals("V28&a") || mdc.equals("V28&D36") || mdc.equals("H&D36")) {
             toReturn = mdcArray[0]+" ## "+mdcArray[1];
         }
@@ -1024,173 +1436,10 @@ public class Gly2mdc2 {
         else if (mdc.equals("D&d") || mdc.equals("I10&d") || mdc.equals("I10&dD46") || mdc.equals("D&D46")) {
             toReturn = mdcArray[0]+" bottomStart "+mdcArray[1];
         }
-        if (!toReturn.equals("")) {
-            return toReturn;
+        else if (mdc.equals("D&(md*md*md)") || mdc.equals("I10&(md*md*md)") || mdc.equals("D&(S43*S43*S43)") || mdc.equals("I10&(S43*S43*S43)")) {
+            toReturn = mdcArray[0]+" bottomStart "+mdcArray[1];
         }
-
-        String devided = addSpaces(mdc, false);
-        
-        devided = devided.replaceAll("(\\[+)", " $1 ").trim();
-        devided = devided.replaceAll("(\\]+)", " $1 ").trim();
-        devided = devided.replaceAll(" +", " ");
-        mdcArray =  devided.split(" ");
-        
-        String thisMdc, pos ="", toAdd = "", mdc1, mdc2, mdcForSign1, mdcForSign2;
-        Sign sign1, sign2;
-        String[] insert = new String[mdcArray.length];
-        for (int i=0; i<mdcArray.length; i++) {
-            mdc1 = mdcArray[i];
-            mdc1 = isTranslit(mdc1);
-            sign1 = signs.get(mdc1);
-            insert[i] = "";
-            if (mdc1.matches("[&\\^]")) {
-                insert[i] = mdc1;
-            }
-            else if (sign1 != null && sign1.getInsert()) {
-                insert[i] = "I";
-            }
-            else {
-                insert[i] = "N";
-            }
-        }
-        toAdd = "";
-        for (int i=1; i<mdcArray.length; i+=2) {
-            toAdd = toAdd.replaceAll(" +", " ");
-            mdcForSign1 = "";
-            mdcForSign2 = "";
-            mdc2 = "";
-            //get previous sign
-            mdc1 = mdcArray[i-1];
-            if (mdcTranslits.containsKey(mdc1)) {
-                mdcForSign1 = mdcTranslits.get(mdc1);
-            }
-            else {
-                mdcForSign1 = mdc1;
-            }
-            sign1 = signs.get(mdcForSign1);
-            //get the following sign
-            if (i<mdcArray.length-1) {
-                mdc2 = mdcArray[i+1];
-                mdcForSign2 = isTranslit(mdc2);
-                if (mdcForSign2.equals("")) {
-                    mdcForSign2 = mdc2;
-                }
-            }       
-            sign2 = signs.get(mdcForSign2);
-            //get the sign to consider
-            thisMdc = mdcArray[i];
-            //the easy ones above and next
-            if (thisMdc.equals(":") || thisMdc.equals("*")) {
-                if (toAdd.length() == 0) {
-                    toAdd += mdc1+" "+thisMdc+" "+mdc2+" ";
-                }
-                else {
-                    toAdd += " "+thisMdc+" "+mdc2+" ";
-                }
-            }
-            //insertion before and after
-            //find the position using the possible places for this sign then mark the insertion in the group
-            else if (thisMdc.equals("&") || thisMdc.equals("^")) {
-                if (thisMdc.equals("^")) {
-                    if (sign2 != null) {
-                        pos = sign2.getBegin();
-                        if (pos.equals("")) {
-                            pos = sign2.getTop();
-                        }
-                        else if (pos.equals("")) {
-                            pos = sign1.getEnd();
-                        }
-                        else if (pos.equals("")) {
-                            pos = sign1.getBottom();
-                        }
-                        else {
-                            pos = "*";
-                        }
-                    }
-                    if (!toAdd.equals("") && toAdd.split(" ").length == i) {
-                            toAdd += " "+pos+" "+mdc2+" ";
-                        }
-                        else {
-                            toAdd += mdc1+" "+pos+" "+mdc2+" ";
-                        }
-                }
-                else if (thisMdc.equals("&")) {
-                    String toDo1 = insert[i-1];
-                    String toDo2 = insert[i+1];
-                    if (toDo1.equals("I")) {
-                        pos = sign1.getEnd();
-                        if (pos.equals("")) {
-                            pos = sign1.getMiddle();
-                        }
-                        if (pos.equals("")) {
-                            pos = sign1.getTop();
-                        }
-                        if (pos.equals("")) {
-                            pos = sign1.getBottom();
-                        }
-                        if (pos.equals("") && !annotations.isEmpty()) {
-                            toAdd += mdc1+"##"+mdc2;
-                            i++;
-                            continue;
-                        }
-                        if (pos.equals("") && toDo2.equals("I") && sign2 != null) {
-                            pos = sign2.getBegin();
-                            if (!pos.equals("")) {
-                                String[] toAddArray = toAdd.split(" ");
-                                if (toAdd.length()>0 && toAddArray.length == i) {
-                                    if (insert[i-2].equals("^")) {
-                                        toAdd += pos+" "+mdc2;
-                                    }
-                                }
-                                else {
-                                    toAdd += mdc2+" "+pos+" "+mdc1+" ";
-                                }
-                                i++;
-                                continue;
-                            }
-                        }
-                        if (pos.equals("")) {
-                            pos = sign1.getBegin();
-                        }
-                        if (!toAdd.equals("") && toAdd.split(" ").length == i) {
-                            toAdd += pos+" "+mdc2+" ";
-                        }
-                        else {
-                            toAdd += mdc1+" "+pos+" "+mdc2+" ";
-                        }
-                    }
-                    else if (toDo2.equals("I")) {
-                        pos = sign2.getBegin();
-                        
-                        if (pos.equals("")) {
-                            pos = sign2.getMiddle();
-                        }
-                        if (pos.equals("")) {
-                            pos = sign2.getTop();
-                        }
-                        if (pos.equals("")) {
-                            pos = sign2.getBottom();
-                        }
-                        if (!toAdd.equals("") && toAdd.split(" ").length == i) {
-                            toAdd += pos+" "+mdc2+" ";
-                        }
-                        else {
-                            toAdd += mdc2+" "+pos+" "+mdc1+" ";
-                        }
-                    }
-                    else {
-                        if (toAdd.length() == 0) {
-                            toAdd += mdc1+" * "+mdc2+" ";
-                            
-                        }
-                        else {
-                            toAdd += " * "+mdc2+" ";
-                        }
-                    }
-                }
-            }
-        }
-        return toAdd.trim();
+        return toReturn;
     }
     
     //Check if the encoding is in the list of translit > encoding
@@ -1198,10 +1447,11 @@ public class Gly2mdc2 {
         if (mdcTranslits.containsKey(mdc)) {
             return mdcTranslits.get(mdc);
         }
-        return "";
+        return mdc;
     }
     
     //get the Unicode sign for the given encoding
+    //the conversion of codepoint to character is done in Sign.java
     private static String getUniForSign(String mdc) {
         if (signs.containsKey(mdc)) {
                 Sign sign = signs.get(mdc);
@@ -1212,11 +1462,12 @@ public class Gly2mdc2 {
     
     //get the Unicodes for the sign or sign group
     private static String getUnicodes(String mdc) {
-        String thisChar = "", uni, translit;
+        String thisChar = "", uni, translit, newMdc = "";
         //remove parentheses
-        mdc = mdc.replaceAll("\\{\\{[^\\}]+\\}\\}", "");
+        mdc = mdc.replaceAll("(\\{\\{[^\\}]+\\}\\})|(%)", "");
         String[] mdcArray = mdc.split(" "), charArray;
         for (String thisMdc : mdcArray) {
+            
             translit = isTranslit(thisMdc);
             if (!translit.equals("")) {
                 String thisUni = "";
@@ -1240,50 +1491,90 @@ public class Gly2mdc2 {
                 uni = getUniForSign(shortMdc);
             }
             //if still not an encoding in the list, check without rotations/size indications
-            else if (uni.equals("") && thisMdc.matches(".*€R[0-9]+")) {
-                String partMdc = thisMdc.split("€")[0];
-                String rotation = "\\"+thisMdc.split("€")[1];
-                String uniRot = "";
-                uniRot = getUniForSign(rotation);
-                uni = getUniForSign(partMdc);
-                if (!uni.equals("")) {
-                    if (!uniRot.equals("")) {
-                        uni += " "+uniRot;
+            if (uni.equals("") && thisMdc.contains("€")) {
+                String token = thisMdc.replaceAll("€", " €");
+                //System.out.println(thisChar+"\t"+token);
+                String[] array = token.split(" ");
+                String uniAnno;
+                for (int i=1; i<array.length; i++) {
+                    String anno = array[i].replaceAll("€", "\\\\");
+                    if (anno.matches("\\\\")) {
+                        uni += " "+getUniForSign("<->");
+                        newMdc += anno+" ";
+                    }
+                    if (anno.matches("\\\\R[0-9]+")) {
+                        String uniRot = getUniForSign(anno);
+                        if (!uni.equals("")) {
+                            if (!uniRot.equals("")) {
+                                uni += " "+uniRot;
+                            }
+                        }
+                        else {
+                            uni += " "+uniRot;
+                        }
+                        newMdc += anno+" ";
+                    }
+                    else {
+                        thisMdc = "";
+                        newMdc += array[i]+" ";
                     }
                 }
-                else {
-                    uni = uniRot;
-                }
             }
-            if (!uni.isBlank()) {
+            else {
+                newMdc += thisMdc+" ";
+            }
+            if (!uni.isEmpty()) {
+                
                 thisChar += " "+uni;
+                //System.out.println(thisChar);
             }
-            else if (!thisMdc.contains("€")) {
+            else {
+                
                 thisChar += " "+thisMdc;
+                
             }
         }
-        return thisChar;
+        return thisChar+";"+newMdc.trim();
     }
     
-    
     private static void saveToFile(String toFile, String dir, String filename) throws IOException {
-        WriteToFile writer = new WriteToFile(dir+"/"+filename);
-        writer.write(toFile);
-        writer.end();
+        BufferedWriter writer = null;
+        File file = new File(dir+""+filename);
+        try {
+            writer = new BufferedWriter(new FileWriter(file, false));
+            writer.write(toFile);
+        }
+        catch (Exception e) {
+            System.out.println("Error while creating writer: "+e.getMessage());
+        }
+        finally {
+            if (writer != null) {
+                writer.flush();
+                writer.close();
+            }
+        }
     }
     
     //read the text from the file
-    private static String readBytes(String filename) {
-        byte[] bytes = new byte[0];
-        try (FileInputStream fis = new FileInputStream(filename)) {
-            bytes = fis.readAllBytes();
-            for (byte b : bytes) {
+    private static String readBytes(String filename) throws IOException {
+        BufferedReader reader = null;
+        String text = "";
+        try {
+            reader= new BufferedReader(new FileReader(filename));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                text+= line+"\n";
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        String s = new String(bytes, StandardCharsets.UTF_8);
-        return s;
+        catch (Exception e) {
+            System.out.println("Trying to read text: "+e);
+        }
+        finally {
+            if (reader != null) {
+                reader.close();
+            }
+        }
+        return text;
     }
     
     //get a match for the pattern given
@@ -1320,11 +1611,13 @@ public class Gly2mdc2 {
             }
         }
         catch (Exception e) {
-            
+            System.out.println("Trying to read unicodes: "+e);
         }
         finally {
-            reader.close();
-            is.close();
+            if (is != null) {
+                reader.close();
+                is.close();
+            }
         }
     }
     
@@ -1353,11 +1646,13 @@ public class Gly2mdc2 {
             }
         }
         catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Trying to read TSL: "+e);
         }
         finally {
-            reader.close();
-            is.close();
+            if (is != null) {
+                reader.close();
+                is.close();
+            }
         }
     }
     
@@ -1389,11 +1684,13 @@ public class Gly2mdc2 {
             }
         }
         catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Trying to read translit2mdc: "+e);
         }
         finally {
-            reader.close();
-            i.close();
+            if (i != null) {
+                reader.close();
+                i.close();
+            }
         }
     }
     
@@ -1475,7 +1772,7 @@ public class Gly2mdc2 {
             }
         }
         catch (Exception ex) {
-            
+            System.out.println("Trying to read insertions: "+ex);
         }
         finally {
             reader.close();
@@ -1485,20 +1782,39 @@ public class Gly2mdc2 {
     
     public static void main(String[] args) throws IOException, ClassNotFoundException, FontFormatException {
         dirToOpen = "~/";
-        currentFont = readFont("resources/Aegyptus.otf");
-        readUnicode("resources/mdc2uni.txt");
-        readMdc("resources/translit2mdc.txt");
-        readTSL("resources/signtsl.txt");
-        readInsertions("resources/myIns.txt");
-        
+        currentFont = readFont("/Aegyptus.otf");
+        readUnicode("/mdc2uni.txt");
+        readMdc("/translit2mdc.txt");
+        readTSL("/signtsl.txt");
+        readInsertions("/myIns.txt");
+        //FlatLaf.setup();
+
+// create UI here...
         try {
-            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+            //UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+            //UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+            UIManager.setLookAndFeel( new FlatLightLaf() );
+            UIManager.put( "ScrollBar.width", 14 );
+            UIManager.put( "TabbedPane.showTabSeparators", true );
+            UIManager.put( "TabbedPane.selectedBackground", Color.white );
+            UIManager.put( "TabbedPane.background", Color.white );
+            UIManager.put( "TabbedPane.inactiveUnderlineColor", Color.white );
+            UIManager.put( "TabbedPane.underlineColor", Color.white );
+            UIManager.put( "TextPane.margin", new Insets( 105, 25, 25, 25 ) );
+            UIManager.put( "Label.background", new Color( 0xe1e1e1 ) );
+            UIManager.put( "TabbedPane.selectionFollowsFocus", true );
+            UIManager.put( "TitlePane.borderColor", new Color( 0xe1e1e1) );
+            UIManager.put( "TitlePane.showIcon", false );
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         SwingUtilities.invokeLater(() -> {
-            Gly2mdc2 gly2mdc2 = new Gly2mdc2();
+            try {
+                Gly2mdc2 gly2mdc2 = new Gly2mdc2();
+            } catch (IOException ex) {
+                Logger.getLogger(Gly2mdc2.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
         
     }
@@ -1512,14 +1828,17 @@ public class Gly2mdc2 {
             this.radius = radius;
         }
 
+        @Override
         public Insets getBorderInsets(Component c) {
             return new Insets(this.radius+1, this.radius+1, this.radius+2, this.radius);
         }
 
+        @Override
         public boolean isBorderOpaque() {
             return true;
         }
 
+        @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
             g.drawRoundRect(x, y, width-1, height-1, radius, radius);
         }

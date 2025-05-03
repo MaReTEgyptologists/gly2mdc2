@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package com.marete.gly2mdc2;
 
 import java.util.ArrayList;
 
@@ -11,8 +12,9 @@ import java.util.ArrayList;
  */
 public class Model {
     private String textName, modelSource, creator, organization, fundedBy, repository;
+    private ArrayList<String> orientation;
     private ArrayList<String> infos;
-    private ArrayList<Item> items;
+    private ArrayList<Line> lines;
     
 
     public Model() {
@@ -33,11 +35,18 @@ public class Model {
         this.organization = "";
         this.fundedBy = "";
         this.repository = "";
-        this.items = new ArrayList<>();
+        this.lines = new ArrayList<>();
     }
 
     public void setTextName(String textName) {
         this.textName = textName;
+    }
+    
+    public void setOrientation(String orientation) {
+        if (this.orientation == null) {
+            this.orientation = new ArrayList<>();
+        }
+        this.orientation.add(orientation);
     }
 
     public void setCreator(String creator) {
@@ -51,11 +60,11 @@ public class Model {
         infos.add(info);
     }
 
-    public void setItem(Item item) {
-        if (this.items == null) {
-            this.items = new ArrayList<>();
+    public void setLine(Line line) {
+        if (this.lines == null) {
+            this.lines = new ArrayList<>();
         }
-        this.items.add(item);
+        this.lines.add(line);
     }
 
     public String getTextName() {
@@ -66,11 +75,11 @@ public class Model {
         return this.creator;
     }
     
-    public Item getLast() {
-        return this.items.get(items.size()-1);
+    public Line getLast() {
+        return this.lines.get(lines.size()-1);
     }
     
     public void deleteLast() {
-        this.items.remove(items.size()-1);
+        this.lines.remove(lines.size()-1);
     }
 }
